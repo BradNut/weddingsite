@@ -18,10 +18,11 @@ export default withSession(async (req, res) => {
     return;
   }
 
-  await connectDb();
-
-  // const { id: groupId } = await req.body;
-  // console.log(`groupId: ${groupId}`);
+  // TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION
+  // In production just await connectDB()
+  if (process.env.SITE_ENV !== 'TEST_SITE') {
+    await connectDb();
+  }
 
   const response = {};
 
@@ -57,27 +58,33 @@ export default withSession(async (req, res) => {
       break;
     case 'POST':
       try {
-        const { groupId, guests, note } = body;
-        for (const guest of guests) {
-          // console.log(`Updating ${guest.id} with status ${guest.rsvpStatus}`);
-          const guestData = await Guest.findById(guest.id);
-          const accepted = guest?.rsvpStatus === 'accepted';
-          guestData.rsvpStatus =
-            guest?.rsvpStatus !== 'invited' ? guest?.rsvpStatus : 'invited';
-          guestData.dietaryNotes = guest?.dietaryNotes;
-          guestData.songRequests = guest?.songRequests;
-          guestData.plusOne =
-            (guestData?.hasPlusOne && guest?.plusOne && accepted) || false;
-          guestData.plusOneFirstName =
-            (guestData?.hasPlusOne && guest?.plusOneFirstName) || '';
-          guestData.plusOneLastName =
-            (guestData?.hasPlusOne && guest?.plusOneLastName) || '';
-          guestData.save();
+        // TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION
+        if (process.env.SITE_ENV === 'TEST_SITE') {
+          console.log('DONE!')
+          res.status(200).json(JSON.stringify({ message: 'SUCCESS' }));
+        } else {
+          const { groupId, guests, note } = body;
+          for (const guest of guests) {
+            // console.log(`Updating ${guest.id} with status ${guest.rsvpStatus}`);
+            const guestData = await Guest.findById(guest.id);
+            const accepted = guest?.rsvpStatus === 'accepted';
+            guestData.rsvpStatus =
+              guest?.rsvpStatus !== 'invited' ? guest?.rsvpStatus : 'invited';
+            guestData.dietaryNotes = guest?.dietaryNotes;
+            guestData.songRequests = guest?.songRequests;
+            guestData.plusOne =
+              (guestData?.hasPlusOne && guest?.plusOne && accepted) || false;
+            guestData.plusOneFirstName =
+              (guestData?.hasPlusOne && guest?.plusOneFirstName) || '';
+            guestData.plusOneLastName =
+              (guestData?.hasPlusOne && guest?.plusOneLastName) || '';
+            guestData.save();
+          }
+          await Group.findByIdAndUpdate(groupId, {
+            note,
+          });
+          res.status(200).json(JSON.stringify({ message: 'SUCCESS' }));
         }
-        await Group.findByIdAndUpdate(groupId, {
-          note,
-        });
-        res.status(200).json(JSON.stringify({ message: 'SUCCESS' }));
       } catch (error) {
         const { response: fetchResponse } = error;
         console.error('error', error);

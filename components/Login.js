@@ -136,7 +136,6 @@ const Login = () => {
       >
         {errorMsg && <p className="error">Error: {errorMsg}</p>}
         <fieldset aria-busy={loading} disabled={loading}>
-          <span>Temp password is "weddingsite". PLEASE CHANGE FOR YOUR PRODUCTION SITE!</span>
           <label htmlFor="username">
             <span>Username</span>
             <input
@@ -160,6 +159,8 @@ const Login = () => {
               onChange={handleChange}
             />
           </label>
+          <p>Temp password is "weddingsite".</p>
+          <p>PLEASE CHANGE FOR YOUR PRODUCTION SITE!</p>
           <input
             type="penguin"
             name="penguin"

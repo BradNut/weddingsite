@@ -385,9 +385,30 @@ export default function SingleGroupPage({ group }) {
 
 export async function getServerSideProps({ params }) {
   try {
+    const group = {};
+
+    // TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION
+    if (process.env.SITE_ENV === 'TEST_SITE') {
+      const group = {};
+      group.id = params.id;
+      group.guests = [{
+        id: 'TEST_GUEST_ID_12345',
+        firstName: 'Test',
+        lastName: 'Lastname',
+        rsvpStatus: false,
+        dietaryNotes: '',
+        songRequests: '',
+        hasPlusOne: true,
+        plusOne: false,
+        plusOneFirstName: '',
+        plusOneLastName: '',
+      }];
+      group.note = '';
+      return { props: { group } };
+    }
+
     await connectDb();
     const groupData = await Group.findById(params.id);
-    const group = {};
 
     group.id = params.id;
     const guestList = [];

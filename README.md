@@ -13,7 +13,9 @@ Features include:
   - Travel information
   - RSVP forms
 
-## Names, Dates, Locations are all hardcoded to a value
+## Detailed Info
+
+Names, Dates, Locations are all hardcoded to a value
 
 The site implements a basic auth with [next-iron-session](https://github.com/vvo/next-iron-session) to protect access without knowing the password to the site.
 
@@ -24,6 +26,9 @@ Use of CSS variables at a Layout level allows for theming and is easily extensib
 Adding, Updating, and Deleting of guests and groups is currently done manually on the DB or on a deployment of the admin specific branch.
 
 This admin branch is not included yet in this example site as no roles or permissions have been set up. However, this branch does include  additional pages to add, edit, and delete these guests and groups.
+
+*If deploying to production please remove all sections that have the following:*
+```// TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION```
 
 ## Tech
 
