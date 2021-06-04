@@ -84,7 +84,7 @@ const Login = () => {
   const router = useRouter();
 
   const { inputs, handleChange, clearForm, resetForm } = useForm({
-    username: 'ibwedding',
+    username: 'weddinguser',
     password: '',
     penguin: 'penguin',
   });
