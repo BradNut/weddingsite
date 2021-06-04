@@ -99,7 +99,7 @@ export default function PartyPage() {
         <h1 className="center">Meet our Wedding Party</h1>
         <CustomNextImage
           src="https://via.placeholder.com/450X800.png"
-          alt="Wedding Part"
+          alt="Wedding Party"
           height={450}
           width={800}
         />
