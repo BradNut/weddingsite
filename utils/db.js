@@ -20,7 +20,7 @@ async function connectDb() {
 
   // try {
   //   // Confirm connection
-  //   await client.db('waddle').command({ ping: 1 });
+  //   await client.db('weddinguser').command({ ping: 1 });
   //   console.log('🗄️ Connected to DB Success');
   // } catch (e) {
   //   console.error(e);

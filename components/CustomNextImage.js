@@ -30,7 +30,6 @@ const CustomStylesContainer = styled.div`
   }
 `;
 
-
 const CustomNextImage = (props) => {
   const { height, width, src, onLoad, ...other } = props;
   const [onLoadCount, setOnloadCount] = useState(0);
@@ -50,7 +49,7 @@ const CustomNextImage = (props) => {
           setOnloadCount((prev) => prev + 1);
           if (onLoad) onLoad(e);
         }}
-        src={imageUrl}
+        src={src}
         objectFit="cover"
         width={width}
         height={height}

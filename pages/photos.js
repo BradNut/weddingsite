@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { RiExternalLinkLine } from 'react-icons/ri';
 import styled from 'styled-components';
-import CustomNextCloudinaryImage from '../components/CustomNextCloudinaryImage';
+import CustomNextImage from '../components/CustomNextImage';
 import Layout from '../components/Layout';
 import useUser from '../lib/useUser';
 
@@ -88,14 +88,13 @@ export default function PhotosPage() {
           Link to full photo gallery <RiExternalLinkLine />
         </a>
         <PhotosStyles>
-          {photos.map((photo, index) => (
-            <CustomNextCloudinaryImage
-              key={index}
+          {photos.map((photo) => (
+            <CustomNextImage
+              key={photo.alt}
               src={photo.url}
               alt={photo.alt}
               height={1000}
               width={1000}
-              blur
             />
           ))}
         </PhotosStyles>
