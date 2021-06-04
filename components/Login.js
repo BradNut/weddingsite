@@ -136,6 +136,7 @@ const Login = () => {
       >
         {errorMsg && <p className="error">Error: {errorMsg}</p>}
         <fieldset aria-busy={loading} disabled={loading}>
+          <span>Temp password is "weddingsite". PLEASE CHANGE FOR YOUR PRODUCTION SITE!</span>
           <label htmlFor="username">
             <span>Username</span>
             <input

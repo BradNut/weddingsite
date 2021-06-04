@@ -12,6 +12,15 @@ export default withSession(async (req, res) => {
   try {
     if (username && password && penguin && penguin === 'penguin') {
       let isAuthorized = false;
+
+      // TODO: REMOVE THIS IF GOING TO PRODUCTION
+      if (process.env.SITE_ENV === 'TEST_SITE') {
+        const user = { isLoggedIn: isAuthorized, id: 'TEST_SITE_ID_123456' };
+        req.session.set('user', user);
+        await req.session.save();
+        res.json(user);
+      }
+
       const userData = await User.findOne({ username });
       const savedPassword = userData?.password || '';
       isAuthorized = await compare(password, savedPassword);

@@ -1,8 +1,6 @@
 // import mongo from 'mongodb';
 import mongoose from 'mongoose';
 
-// const { MongoClient } = mongo;
-
 const url = process.env.MONGO_URL;
 
 async function connectDb() {
@@ -17,16 +15,6 @@ async function connectDb() {
     useFindAndModify: false,
     useCreateIndex: true,
   });
-
-  // try {
-  //   // Confirm connection
-  //   await client.db('weddinguser').command({ ping: 1 });
-  //   console.log('🗄️ Connected to DB Success');
-  // } catch (e) {
-  //   console.error(e);
-  //   // If there is a problem close connection to db
-  //   await client.close();
-  // }
 }
 
 export default connectDb;
