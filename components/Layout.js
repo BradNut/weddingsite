@@ -7,9 +7,6 @@ const Layout = ({ children }) => (
     <Head>
       <title>NN By the Sea</title>
     </Head>
-    <noscript>
-      <h1>🐧🐧🐧 Please enable JavaScript to view our site. 🐧🐧🐧</h1>
-    </noscript>
     <main>
       <div className="container">{children}</div>
     </main>

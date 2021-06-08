@@ -41,7 +41,36 @@ function MyApp({ Component, pageProps }) {
             as="font"
             crossOrigin=""
           />
+          <noscript>
+            <link rel="stylesheet" href="assets/css/noscript.css" />
+          </noscript>
         </Head>
+        <noscript>
+          <div id="no-script">
+            <div id="no-script-box">
+              <img
+                id="no-script-img"
+                src="assets/images/js-logo.png"
+                alt="Please enable JavaScript"
+              />
+              <h1 id="no-script-maintext">
+                Please enable JavaScript to view the site.
+              </h1>
+              <h2 id="no-script-subtext">
+                This Web application relies on Javascript to function, please{' '}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Enable JavaScript Insructions"
+                  href="https://www.enable-javascript.com/"
+                >
+                  enable
+                </a>{' '}
+                it. Thank You! 🚀
+              </h2>
+            </div>
+          </div>
+        </noscript>
         <Component {...pageProps} />
       </Page>
     </SWRConfig>

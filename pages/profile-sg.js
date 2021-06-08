@@ -5,7 +5,7 @@ const SgProfile = () => {
   const { user } = useUser({ redirectTo: '/login' })
 
   if (!user || user.isLoggedIn === false) {
-    return <Layout>loading...</Layout>
+    return <Layout>Loading...</Layout>
   }
 
   return (
