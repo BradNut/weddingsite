@@ -36,9 +36,7 @@ export default function QandAPage() {
       <QAStyles>
         <ol>
           <li>Question 1</li>
-          <p>
-            Answer 1
-          </p>
+          <p>Answer 1</p>
           <li>How do I get to the venue?</li>
           <p>
             See more detailed info on our{' '}

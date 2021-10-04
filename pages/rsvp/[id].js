@@ -388,7 +388,6 @@ export async function getServerSideProps({ params }) {
 
     // TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION
     if (process.env.SITE_ENV === 'TEST_SITE') {
-      const group = {};
       group.id = params.id;
       group.guests = [
         {
