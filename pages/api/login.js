@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import escape from 'escape-html';
 import withSession from '../../lib/session';
 import connectDb from '../../utils/db';
 import User from '../../models/User';
@@ -14,7 +15,7 @@ export default withSession(async (req, res) => {
   }
 
   try {
-    if (username && password && penguin && penguin === 'penguin') {
+    if (username && password && penguin && escape(penguin) === 'penguin') {
       let isAuthorized = false;
 
       // TODO: REMOVE THIS IF GOING TO PRODUCTION
@@ -24,7 +25,7 @@ export default withSession(async (req, res) => {
         await req.session.save();
         res.json(user);
       } else {
-        const userData = await User.findOne({ username });
+        const userData = await User.findOne({ username: escape(username) });
         const savedPassword = userData?.password || '';
         isAuthorized = await compare(password, savedPassword);
         if (isAuthorized) {
