@@ -129,13 +129,13 @@ export default function PartyPage() {
         {weddingParty.map((party, index) => (
           <PartyCard className="card" key={index}>
             <h2 className="center">{party.name}</h2>
-              <CustomNextImage
-                src="https://via.placeholder.com/1200x1600.png"
-                alt={`${party.name} - ${party.title}`}
-                objectFit="cover"
-                width="1200"
-                height="1600"
-              />
+            <CustomNextImage
+              src="https://via.placeholder.com/1200x1600.png"
+              alt={`${party.name} - ${party.title}`}
+              objectFit="cover"
+              width="1200"
+              height="1600"
+            />
             <h3 className="center">{party.title}</h3>
           </PartyCard>
         ))}

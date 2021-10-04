@@ -78,9 +78,7 @@ export default function TravelAndStayPage() {
         <div>
           <h2>Hotel Information</h2>
           <h2>Do I need to book a hotel room?</h2>
-          <p>
-            Answer
-          </p>
+          <p>Answer</p>
           <p>There are also hotels in the area such as:</p>
           <ul>
             <li>
@@ -104,7 +102,8 @@ export default function TravelAndStayPage() {
                 Example 1 <RiExternalLinkLine />
               </a>
             </li>
-            <p>Travel Time: X minute drive (X miles)</p><li>
+            <p>Travel Time: X minute drive (X miles)</p>
+            <li>
               <a
                 href="https://www.hotelexample.com/"
                 aria-label="Name of Hotel"

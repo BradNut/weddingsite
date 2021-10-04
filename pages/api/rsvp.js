@@ -1,3 +1,4 @@
+import escape from 'escape-html';
 import withSession from '../../lib/session';
 import connectDb from '../../utils/db.js';
 import Guest from '../../models/Guest';
@@ -25,8 +26,8 @@ export default withSession(async (req, res) => {
 
     try {
       const result = await Guest.findOne({
-        firstName: { $regex: new RegExp(firstName.trim(), 'i') },
-        lastName: { $regex: new RegExp(lastName.trim(), 'i') },
+        firstName: { $regex: new RegExp(escape(firstName.trim()), 'i') },
+        lastName: { $regex: new RegExp(escape(lastName.trim()), 'i') },
       });
       // console.log(JSON.stringify(result));
       res.status(200).json({ status: 'SUCCESS', groupId: result.group });

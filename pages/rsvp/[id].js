@@ -163,9 +163,8 @@ export default function SingleGroupPage({ group }) {
     return initial;
   }
 
-  const { inputs, handleChange, clearForm, resetForm } = useForm(
-    getInitialFormData
-  );
+  const { inputs, handleChange, clearForm, resetForm } =
+    useForm(getInitialFormData);
 
   if (!user || user.isLoggedIn === false) {
     return <Layout>Loading...</Layout>;
@@ -288,7 +287,7 @@ export default function SingleGroupPage({ group }) {
               gap: '1rem',
             }}
           >
-            {group.guests.map((guest) =>
+            {group?.guests?.map((guest) =>
               !guest.isPlusOne ? (
                 <QuestionStyles key={`${guest?.id}-dietaryNotes`}>
                   <p>
@@ -320,7 +319,7 @@ export default function SingleGroupPage({ group }) {
               gap: '1rem',
             }}
           >
-            {group.guests.map((guest) =>
+            {group?.guests?.map((guest) =>
               !guest?.isPlusOne ? (
                 <QuestionStyles key={`${guest?.id}-songRequests`}>
                   <p>
@@ -389,20 +388,21 @@ export async function getServerSideProps({ params }) {
 
     // TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION
     if (process.env.SITE_ENV === 'TEST_SITE') {
-      const group = {};
       group.id = params.id;
-      group.guests = [{
-        id: 'TEST_GUEST_ID_12345',
-        firstName: 'Test',
-        lastName: 'Lastname',
-        rsvpStatus: false,
-        dietaryNotes: '',
-        songRequests: '',
-        hasPlusOne: true,
-        plusOne: false,
-        plusOneFirstName: '',
-        plusOneLastName: '',
-      }];
+      group.guests = [
+        {
+          id: 'TEST_GUEST_ID_12345',
+          firstName: 'Test',
+          lastName: 'Lastname',
+          rsvpStatus: false,
+          dietaryNotes: '',
+          songRequests: '',
+          hasPlusOne: true,
+          plusOne: false,
+          plusOneFirstName: '',
+          plusOneLastName: '',
+        },
+      ];
       group.note = '';
       return { props: { group } };
     }

@@ -9,12 +9,7 @@ async function connectDb() {
   if (mongoose.connection.readyState >= 1) {
     return;
   }
-  return mongoose.connect(url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  });
+  return mongoose.connect(url);
 }
 
 export default connectDb;
