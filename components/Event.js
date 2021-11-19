@@ -46,24 +46,31 @@ export default function Event({ event }) {
       </div>
       {showSchedule &&
         scheduleEvents &&
-        scheduleEvents.map(({ name, start, end, venueName }) => (
-          <ScheduleStyle key={name} className="schedule-event">
-            <div>
-              {start && (
-                <h3>
-                  {start}
-                  {end && ` - {end}`}
-                </h3>
-              )}
-            </div>
-            <div>
-              {name && <h3>{name}</h3>}
-              {venueName && (
-                <div dangerouslySetInnerHTML={{ __html: venueName }} />
-              )}
-            </div>
-          </ScheduleStyle>
-        ))}
+        scheduleEvents.map(
+          ({
+            name: eventName,
+            start: eventStart,
+            end: eventEnd,
+            venueName: eventVenueName,
+          }) => (
+            <ScheduleStyle key={name} className="schedule-event">
+              <div>
+                {eventStart && (
+                  <h3>
+                    {eventStart}
+                    {eventEnd && ` - {end}`}
+                  </h3>
+                )}
+              </div>
+              <div>
+                {eventName && <h3>{eventName}</h3>}
+                {eventVenueName && (
+                  <div dangerouslySetInnerHTML={{ __html: eventVenueName }} />
+                )}
+              </div>
+            </ScheduleStyle>
+          )
+        )}
     </EventStyles>
   );
 }

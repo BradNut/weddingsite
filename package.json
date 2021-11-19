@@ -56,7 +56,10 @@
   "eslintConfig": {
     "extends": [
       "wesbos"
-    ]
+    ],
+    "rules": {
+      "react/prop-types": 0
+    }
   },
   "//": "This is our babel config, I prefer this over a .babelrc file",
   "babel": {

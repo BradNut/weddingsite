@@ -297,7 +297,7 @@ export default function SingleGroupPage({ group }) {
               gap: '1rem',
             }}
           >
-            {group.guests.map((guest) =>
+            {group?.guests?.map((guest) =>
               !guest.isPlusOne ? (
                 <QuestionStyles key={`${guest?.id}-dietaryNotes`}>
                   <p>
@@ -329,7 +329,7 @@ export default function SingleGroupPage({ group }) {
               gap: '1rem',
             }}
           >
-            {group.guests.map((guest) =>
+            {group?.guests?.map((guest) =>
               !guest?.isPlusOne ? (
                 <QuestionStyles key={`${guest?.id}-songRequests`}>
                   <p>

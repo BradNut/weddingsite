@@ -1,3 +1,4 @@
+import escape from 'escape-html';
 import withSession from '../../lib/session';
 import Group from '../../models/Group';
 import Guest from '../../models/Guest';
@@ -60,7 +61,7 @@ export default withSession(async (req, res) => {
       try {
         // TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION
         if (process.env.SITE_ENV === 'TEST_SITE') {
-          console.log('DONE!')
+          console.log('DONE!');
           res.status(200).json(JSON.stringify({ message: 'SUCCESS' }));
         } else {
           const { groupId, guests, note } = body;
@@ -70,8 +71,8 @@ export default withSession(async (req, res) => {
             const accepted = guest?.rsvpStatus === 'accepted';
             guestData.rsvpStatus =
               guest?.rsvpStatus !== 'invited' ? guest?.rsvpStatus : 'invited';
-            guestData.dietaryNotes = guest?.dietaryNotes;
-            guestData.songRequests = guest?.songRequests;
+            guestData.dietaryNotes = escape(guest?.dietaryNotes);
+            guestData.songRequests = escape(guest?.songRequests);
             guestData.plusOne =
               (guestData?.hasPlusOne && guest?.plusOne && accepted) || false;
             guestData.plusOneFirstName =
@@ -81,7 +82,7 @@ export default withSession(async (req, res) => {
             guestData.save();
           }
           await Group.findByIdAndUpdate(groupId, {
-            note,
+            note: escape(note),
           });
           res.status(200).json(JSON.stringify({ message: 'SUCCESS' }));
         }
