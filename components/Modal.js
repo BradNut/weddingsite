@@ -1,95 +1,113 @@
-import { createPortal } from 'react-dom';
+import { DialogContent, DialogOverlay } from '@reach/dialog';
+import VisuallyHidden from '@reach/visually-hidden';
+import '@reach/dialog/styles.css';
 import styled from 'styled-components';
 
-const ModalOverlayStyles = styled.div`
-  background-color: #999999;
-  height: 100vh;
-  left: 0;
-  opacity: 0.5;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: 500;
+const DialogStyles = styled.div`
+  @media (max-width: 1000px) {
+    div[data-reach-dialog-content] {
+      width: 55vw;
+    }
+  }
+  @media (max-width: 800px) {
+    div[data-reach-dialog-content] {
+      width: 60vw;
+    }
+  }
+  @media (max-width: 650px) {
+    div[data-reach-dialog-content] {
+      width: 70vw;
+    }
+  }
+  @media (max-width: 600px) {
+    div[data-reach-dialog-content] {
+      width: 80vw;
+    }
+  }
+  @media (max-width: 550px) {
+    div[data-reach-dialog-content] {
+      width: 90vw;
+    }
+  }
+  @media (max-width: 500px) {
+    div[data-reach-dialog-content] {
+      width: 95vw;
+    }
+  }
 `;
 
-const ModalWrapperStyles = styled.div`
-  display: flex;
-  justify-content: center;
-  left: 0;
-  outline: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: fixed;
-  top: 25%;
-  width: 100%;
-  z-index: 1000;
+const ModalCloseStyles = styled.button`
+  color: var(--black);
+  font-size: 2.5rem;
+  text-shadow: none;
+
+  &:hover {
+    transition: 0.3s ease transform;
+    transform: translate3d(0, -2px, 0);
+  }
 `;
 
-const ModalStyles = styled.div`
-  align-items: center;
-  background: var(--background);
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  margin: 1.8rem;
-  max-width: 500px;
-  position: relative;
-  z-index: 100;
-`;
+const StandardModalHeader = (props) => {
+  const { onHide, caption } = props;
+  return (
+    <>
+      <div
+        className="modal-header"
+        style={{
+          display: 'flex',
+          flexWrap: 'nowrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div className="modal-title">{caption}</div>
+        <ModalCloseStyles
+          type="button"
+          className="close-button"
+          onClick={onHide}
+        >
+          <VisuallyHidden>Close</VisuallyHidden>
+          <span>×</span>
+        </ModalCloseStyles>
+      </div>
+      <hr />
+    </>
+  );
+};
 
-const ModalHeaderStyles = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  padding: 1.8rem 0.95rem;
-`;
-
-const ModalTitleStyles = styled.h2`
-  margin-bottom: 0.4rem;
-`;
-
-const ModalButtonStyles = styled.button`
-  // border-top: 1px solid var(--primary);
-  cursor: pointer;
-  font-weight: bold;
-  padding: 2rem;
-  width: 100%;
-`;
-
-const ModalDescriptionStyles = styled.span`
-  padding: 2rem;
-  font-size: 2rem;
-  text-align: center;
-`;
-
-const Modal = ({ isVisible, hideModal, title, message, children }) =>
-  isVisible
-    ? createPortal(
-        <>
-          <ModalOverlayStyles />
-          <ModalWrapperStyles
-            aria-modal
-            aria-hidden={!isVisible}
-            tabIndex={-1}
-            role="dialog"
-            aria-label={title}
-          >
-            <ModalStyles>
-              <ModalHeaderStyles>
-                <ModalTitleStyles>{title}</ModalTitleStyles>
-                <ModalDescriptionStyles>
-                  {message}
-                  {children}
-                </ModalDescriptionStyles>
-              </ModalHeaderStyles>
-              <ModalButtonStyles type="button" onClick={hideModal}>
-                Close
-              </ModalButtonStyles>
-            </ModalStyles>
-          </ModalWrapperStyles>
-        </>,
-        document.body
-      )
-    : null;
-
-export default Modal;
+export default function Modal({
+  isOpen,
+  onHide,
+  contentLabel,
+  headerCaption,
+  focusRef = null,
+  children,
+}) {
+  return (
+    <DialogOverlay
+      allowPinchZoom
+      initialFocusRef={focusRef}
+      onDismiss={onHide}
+      isOpen={isOpen}
+    >
+      <DialogStyles>
+        <DialogContent
+          aria-label={contentLabel}
+          style={{
+            background: 'var(--modalBackground)',
+            boxShadow: 'var(--level-4)',
+            borderRadius: 'var(--borderRadius)',
+            maxWidth: '55rem',
+          }}
+        >
+          <div>
+            <div>
+              <StandardModalHeader caption={headerCaption} onHide={onHide} />
+              {children}
+            </div>
+          </div>
+        </DialogContent>
+      </DialogStyles>
+    </DialogOverlay>
+  );
+}

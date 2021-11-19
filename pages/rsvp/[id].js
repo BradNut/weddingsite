@@ -10,7 +10,6 @@ import Group from '../../models/Group';
 import Guest from '../../models/Guest';
 import connectDb from '../../utils/db';
 import { CalendarIcon, MapIcon } from '../../lib/svgs';
-import useModal from '../../lib/useModal';
 import Modal from '../../components/Modal';
 
 const RSVPGroupStyles = styled.div`
@@ -131,6 +130,14 @@ const ErrorContactStyles = styled.p`
   }
 `;
 
+const ModalContentStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  text-align: center;
+`;
+
 export default function SingleGroupPage({ group }) {
   const { guests, note } = group;
   const { user } = useUser({ redirectTo: '/login' });
@@ -139,8 +146,11 @@ export default function SingleGroupPage({ group }) {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [groupHasPlusOne, setGroupHasPlusOne] = useState(false);
-  const { isVisible, toggleModal } = useModal();
+  const [showModal, setShowModal] = useState(false);
   const address = 'Central Park, New York, New York, USA';
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   function getInitialFormData() {
     const initial = {};
@@ -163,9 +173,8 @@ export default function SingleGroupPage({ group }) {
     return initial;
   }
 
-  const { inputs, handleChange, clearForm, resetForm } = useForm(
-    getInitialFormData
-  );
+  const { inputs, handleChange, clearForm, resetForm } =
+    useForm(getInitialFormData);
 
   if (!user || user.isLoggedIn === false) {
     return <Layout>Loading...</Layout>;
@@ -205,7 +214,7 @@ export default function SingleGroupPage({ group }) {
             body.guests.length > 1 ? 's' : ''
           }. Don't forget to save the date!!`
         );
-        toggleModal();
+        openModal();
       } else {
         setErrorCount(errorCount + 1);
         setErrorMsg('Unable to RSVP Your Group');
@@ -370,14 +379,21 @@ export default function SingleGroupPage({ group }) {
         )}
         <button type="submit">Submit RSVP</button>
       </FormStyles>
-      <Modal isVisible={isVisible} hideModal={toggleModal} title="RSVP Success">
-        <p>{message}</p>
-        <div>
-          <p>Monday, June 3, 2030 at 5:00 PM</p>
-          <a href="/myevents.ics" aria-label="Click to add to calendar">
-            <CalendarIcon /> Add to Calendar
-          </a>
-        </div>
+      <Modal
+        isOpen={showModal}
+        onHide={closeModal}
+        contentLabel="RSVP Success"
+        headerCaption={<h2>RSVP Success</h2>}
+      >
+        <ModalContentStyles>
+          <p>{message}</p>
+          <div>
+            <p>Saturday, June 25, 2022 at 5:00 PM</p>
+            <a href="/ibwedding.ics" aria-label="Click to add to calendar">
+              <CalendarIcon /> Add to Calendar
+            </a>
+          </div>
+        </ModalContentStyles>
       </Modal>
     </div>
   );
@@ -389,20 +405,21 @@ export async function getServerSideProps({ params }) {
 
     // TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION
     if (process.env.SITE_ENV === 'TEST_SITE') {
-      const group = {};
       group.id = params.id;
-      group.guests = [{
-        id: 'TEST_GUEST_ID_12345',
-        firstName: 'Test',
-        lastName: 'Lastname',
-        rsvpStatus: false,
-        dietaryNotes: '',
-        songRequests: '',
-        hasPlusOne: true,
-        plusOne: false,
-        plusOneFirstName: '',
-        plusOneLastName: '',
-      }];
+      group.guests = [
+        {
+          id: 'TEST_GUEST_ID_12345',
+          firstName: 'Test',
+          lastName: 'Lastname',
+          rsvpStatus: false,
+          dietaryNotes: '',
+          songRequests: '',
+          hasPlusOne: true,
+          plusOne: false,
+          plusOneFirstName: '',
+          plusOneLastName: '',
+        },
+      ];
       group.note = '';
       return { props: { group } };
     }

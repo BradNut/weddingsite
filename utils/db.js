@@ -1,4 +1,3 @@
-// import mongo from 'mongodb';
 import mongoose from 'mongoose';
 
 const url = process.env.MONGO_URL;

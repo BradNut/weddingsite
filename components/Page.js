@@ -51,6 +51,9 @@ const GlobalStyles = createGlobalStyle`
     --linkHover: var(--lightViolet);
     --lightHairLine: var(--lightGrey);
     
+    /* Modal */
+    --modalBackground: var(--background);
+
     /* Styles */
     --line: solid 1px var(--lineColor);
 
