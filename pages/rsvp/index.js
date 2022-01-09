@@ -91,7 +91,7 @@ export default function RsvpPage() {
           </ErrorContactStyles>
         )}
         <fieldset aria-busy={loading} disabled={loading}>
-          <label htmlFor="username">
+          <label htmlFor="firstName">
             <span>First Name</span>
             <input
               required
@@ -103,7 +103,7 @@ export default function RsvpPage() {
               onChange={handleChange}
             />
           </label>
-          <label htmlFor="password">
+          <label htmlFor="lastName">
             <span>Last Name</span>
             <input
               required

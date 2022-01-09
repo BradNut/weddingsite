@@ -311,6 +311,15 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     max-width: 100%;
   }
+
+  .sr-only {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
 `;
 
 const ContentStyles = styled.main`

@@ -1,6 +1,6 @@
 {
   "name": "weddingsite",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Wedding Website",
   "private": true,
   "scripts": {
@@ -13,45 +13,45 @@
     "@reach/portal": "^0.16.2",
     "@reach/visually-hidden": "^0.16.0",
     "babel-core": "^6.26.3",
-    "babel-plugin-styled-components": "^1.13.3",
+    "babel-plugin-styled-components": "^2.0.2",
     "bcryptjs": "^2.4.3",
     "cloudinary-build-url": "^0.2.1",
     "dotenv": "^10.0.0",
     "escape-html": "^1.0.3",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^4.1.4",
-    "mongoose": "^6.0.12",
-    "next": "^11.1.2",
+    "mongodb": "^4.3.0",
+    "mongoose": "^6.1.5",
+    "next": "^12.0.7",
     "next-iron-session": "^4.2.0",
     "next-with-apollo": "^5.2.1",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
-    "styled-components": "^5.3.1",
+    "styled-components": "^5.3.3",
     "swr": "^0.5.6",
     "waait": "^1.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.0",
-    "@typescript-eslint/eslint-plugin": "^4.32.0",
-    "@typescript-eslint/parser": "^4.32.0",
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-config-wesbos": "^2.1.0",
+    "eslint-config-wesbos": "^3.0.2",
     "eslint-plugin-html": "^6.2.0",
-    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.27.0",
+    "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.4.1",
-    "typescript": "^4.4.4"
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
   },
   "eslintConfig": {
     "extends": [
@@ -63,6 +63,9 @@
   },
   "//": "This is our babel config, I prefer this over a .babelrc file",
   "babel": {
+    "plugins": [
+      ["styled-components", { "ssr": true, "displayName": true, "preprocess": false } ]
+    ],
     "env": {
       "development": {
         "presets": [
@@ -73,7 +76,8 @@
             "styled-components",
             {
               "ssr": true,
-              "displayName": true
+              "displayName": true,
+              "preprocess": false
             }
           ]
         ]

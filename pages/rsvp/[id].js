@@ -249,7 +249,7 @@ export default function SingleGroupPage({ group }) {
             >
               <MapIcon />
             </a>{' '}
-            Wedding Location
+            Wedding Event Location
           </p>
           <p>{address}</p>
         </AddressStyles>
@@ -304,6 +304,7 @@ export default function SingleGroupPage({ group }) {
                     {guest.firstName} {guest.lastName} :
                   </p>
                   <label htmlFor={`${guest.id}-dietaryNotes`}>
+                    <p className="sr-only">{`Enter dietery restrictions for ${guest.firstName} ${guest.lastName}`}</p>
                     <textarea
                       name={`${guest.id}-dietaryNotes`}
                       id={`${guest.id}-dietaryNotes`}
@@ -336,6 +337,7 @@ export default function SingleGroupPage({ group }) {
                     {guest.firstName} {guest.lastName}:
                   </p>
                   <label htmlFor={`${guest.id}-songRequests`}>
+                    <p className="sr-only">{`Enter song requests for ${guest.firstName} ${guest.lastName}`}</p>
                     <textarea
                       name={`${guest.id}-songRequests`}
                       id={`${guest.id}-songRequests`}
@@ -354,16 +356,21 @@ export default function SingleGroupPage({ group }) {
           </div>
         </fieldset>
         <fieldset aria-busy={loading} disabled={loading}>
-          <legend>Additonal Notes?</legend>
-          <textarea
-            name="note"
-            id="note"
-            cols="30"
-            rows="10"
-            value={inputs.note}
-            onChange={handleChange}
-            placeholder="Anything you want to ask us?"
-          />
+          <legend>Additional Notes?</legend>
+          <label htmlFor="note">
+            <p className="sr-only">
+              Enter additional notes your want to ask Irene and Bradley
+            </p>
+            <textarea
+              name="note"
+              id="note"
+              cols="30"
+              rows="10"
+              value={inputs.note}
+              onChange={handleChange}
+              placeholder="Anything you want to ask us?"
+            />
+          </label>
         </fieldset>
         <hr />
         {errorMsg && <p className="error">Error: {errorMsg}</p>}
@@ -389,7 +396,7 @@ export default function SingleGroupPage({ group }) {
           <p>{message}</p>
           <div>
             <p>Saturday, June 25, 2022 at 5:00 PM</p>
-            <a href="/ibwedding.ics" aria-label="Click to add to calendar">
+            <a href="/myevent.ics" aria-label="Click to add to calendar">
               <CalendarIcon /> Add to Calendar
             </a>
           </div>
