@@ -34,7 +34,7 @@ export default withSession(async (req, res) => {
         // console.log('group', group);
         response.id = id;
         const guestList = [];
-        for (const guestId of group?.guests) {
+        for (const guestId of group?.guests || []) {
           // console.log(JSON.stringify(guestId));
           const guestData = await Guest.findById(guestId);
           const guest = {

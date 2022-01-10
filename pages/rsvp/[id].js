@@ -297,29 +297,32 @@ export default function SingleGroupPage({ group }) {
               gap: '1rem',
             }}
           >
-            {group?.guests?.map((guest) =>
-              !guest.isPlusOne ? (
-                <QuestionStyles key={`${guest?.id}-dietaryNotes`}>
-                  <p>
-                    {guest.firstName} {guest.lastName} :
-                  </p>
-                  <label htmlFor={`${guest.id}-dietaryNotes`}>
-                    <p className="sr-only">{`Enter dietery restrictions for ${guest.firstName} ${guest.lastName}`}</p>
-                    <textarea
-                      name={`${guest.id}-dietaryNotes`}
-                      id={`${guest.id}-dietaryNotes`}
-                      cols="30"
-                      rows="2"
-                      placeholder="Example: Nut allergy, Fish, etc."
-                      value={inputs[guest.id]?.dietaryNotes}
-                      onChange={handleChange}
-                    />
-                  </label>
-                </QuestionStyles>
-              ) : (
-                ''
+            {
+              // eslint-disable-next-line react/prop-types
+              group?.guests?.map((guest) =>
+                !guest.isPlusOne ? (
+                  <QuestionStyles key={`${guest?.id}-dietaryNotes`}>
+                    <p>
+                      {guest.firstName} {guest.lastName} :
+                    </p>
+                    <label htmlFor={`${guest.id}-dietaryNotes`}>
+                      <p className="sr-only">{`Enter dietery restrictions for ${guest.firstName} ${guest.lastName}`}</p>
+                      <textarea
+                        name={`${guest.id}-dietaryNotes`}
+                        id={`${guest.id}-dietaryNotes`}
+                        cols="30"
+                        rows="2"
+                        placeholder="Example: Nut allergy, Fish, etc."
+                        value={inputs[guest.id]?.dietaryNotes}
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </QuestionStyles>
+                ) : (
+                  ''
+                )
               )
-            )}
+            }
           </div>
         </fieldset>
         <fieldset aria-busy={loading} disabled={loading}>
@@ -330,29 +333,32 @@ export default function SingleGroupPage({ group }) {
               gap: '1rem',
             }}
           >
-            {group?.guests?.map((guest) =>
-              !guest?.isPlusOne ? (
-                <QuestionStyles key={`${guest?.id}-songRequests`}>
-                  <p>
-                    {guest.firstName} {guest.lastName}:
-                  </p>
-                  <label htmlFor={`${guest.id}-songRequests`}>
-                    <p className="sr-only">{`Enter song requests for ${guest.firstName} ${guest.lastName}`}</p>
-                    <textarea
-                      name={`${guest.id}-songRequests`}
-                      id={`${guest.id}-songRequests`}
-                      cols="30"
-                      rows="2"
-                      placeholder="Example: Paint It Black - Rolling Stones"
-                      value={inputs[guest.id]?.songRequests}
-                      onChange={handleChange}
-                    />
-                  </label>
-                </QuestionStyles>
-              ) : (
-                ''
+            {
+              // eslint-disable-next-line react/prop-types
+              group?.guests?.map((guest) =>
+                !guest?.isPlusOne ? (
+                  <QuestionStyles key={`${guest?.id}-songRequests`}>
+                    <p>
+                      {guest.firstName} {guest.lastName}:
+                    </p>
+                    <label htmlFor={`${guest.id}-songRequests`}>
+                      <p className="sr-only">{`Enter song requests for ${guest.firstName} ${guest.lastName}`}</p>
+                      <textarea
+                        name={`${guest.id}-songRequests`}
+                        id={`${guest.id}-songRequests`}
+                        cols="30"
+                        rows="2"
+                        placeholder="Example: Paint It Black - Rolling Stones"
+                        value={inputs[guest.id]?.songRequests}
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </QuestionStyles>
+                ) : (
+                  ''
+                )
               )
-            )}
+            }
           </div>
         </fieldset>
         <fieldset aria-busy={loading} disabled={loading}>
@@ -436,7 +442,7 @@ export async function getServerSideProps({ params }) {
 
     group.id = params.id;
     const guestList = [];
-    for (const guestId of groupData?.guests) {
+    for (const guestId of groupData?.guests || []) {
       const guestData = await Guest.findById(guestId);
       const guest = {
         id: guestData.id,
