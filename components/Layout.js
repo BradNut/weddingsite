@@ -27,7 +27,7 @@ const Layout = ({ children }) => (
       {/* <meta name="twitter:url" content="https://" /> */}
       <meta name="twitter:title" content="Wedding Website" />
       <meta name="twitter:description" content="Wedding Website" />
-      <meta name="twitter:image" content="/b_shell_nut_favicon.png" />
+      <meta name="twitter:image" content="/penguin.svg" />
     </Head>
     <noscript>
       <h1>Please enable JavaScript to view our site.</h1>
