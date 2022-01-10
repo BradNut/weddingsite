@@ -5,7 +5,6 @@ import { SWRConfig } from 'swr';
 import Page from '../components/Page';
 import '../components/styles/nprogress.css';
 import fetch from '../lib/fetchJson';
-import penguin from '../public/penguin.svg';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -40,7 +39,7 @@ function MyApp({ Component, pageProps }) {
             content="Wedding Website"
             key="ogsitename"
           />
-          <meta property="og:image" content={penguin} />
+          <meta property="og:image" content="/penguin.svg" />
           <meta property="og:locale" content="en_US" />
           <link
             rel="preload"
