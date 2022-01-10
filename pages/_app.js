@@ -22,7 +22,11 @@ function MyApp({ Component, pageProps }) {
     >
       <Page>
         <Head>
-          <link rel="icon" type="image/svg" href="/penguin.svg" />
+          <link
+            rel="icon"
+            type="image/png"
+            href="/assets/images/wedding-ring.png"
+          />
           {/* meta tags */}
           <meta charSet="utf-8" />
           <meta name="description" content="Wedding Website" />
@@ -39,13 +43,16 @@ function MyApp({ Component, pageProps }) {
             content="Wedding Website"
             key="ogsitename"
           />
-          <meta property="og:image" content="/penguin.svg" />
+          <meta property="og:image" content="/assets/images/wedding-ring.png" />
           <meta property="og:locale" content="en_US" />
           <meta name="twitter:card" content="summary" />
           {/* <meta name="twitter:url" content="https://" /> */}
           <meta name="twitter:title" content="Wedding Website" />
           <meta name="twitter:description" content="Wedding Website" />
-          <meta name="twitter:image" content="/b_shell_nut_favicon.png" />
+          <meta
+            name="twitter:image"
+            content="/assets/images/wedding-ring.png"
+          />
           <link
             rel="preload"
             href="/fonts/Josefin_Sans/static/JosefinSans-Regular.ttf"
