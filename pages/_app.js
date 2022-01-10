@@ -27,8 +27,20 @@ function MyApp({ Component, pageProps }) {
           <meta charSet="utf-8" />
           <meta name="description" content="Wedding Website" />
           <meta name="theme-color" content="#FCCFB9" />
-          <meta name="robots" content="noindex" />
-          <meta name="googlebot" content="noindex" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="Wedding Website" key="og:title" />
+          <meta
+            description="og:description"
+            content="Wedding Website"
+            key="ogdesc"
+          />
+          <meta
+            property="og:site_name"
+            content="Wedding Website"
+            key="ogsitename"
+          />
+          <meta property="og:image" content="/penguin.svg" />
+          <meta property="og:locale" content="en_US" />
           <link
             rel="preload"
             href="/fonts/Josefin_Sans/static/JosefinSans-Regular.ttf"
