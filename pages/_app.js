@@ -41,6 +41,11 @@ function MyApp({ Component, pageProps }) {
           />
           <meta property="og:image" content="/penguin.svg" />
           <meta property="og:locale" content="en_US" />
+          <meta name="twitter:card" content="summary" />
+          {/* <meta name="twitter:url" content="https://" /> */}
+          <meta name="twitter:title" content="Wedding Website" />
+          <meta name="twitter:description" content="Wedding Website" />
+          <meta name="twitter:image" content="/b_shell_nut_favicon.png" />
           <link
             rel="preload"
             href="/fonts/Josefin_Sans/static/JosefinSans-Regular.ttf"
