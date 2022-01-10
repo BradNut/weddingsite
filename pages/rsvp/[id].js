@@ -402,7 +402,7 @@ export default function SingleGroupPage({ group }) {
           <p>{message}</p>
           <div>
             <p>Saturday, June 25, 2022 at 5:00 PM</p>
-            <a href="/myevent.ics" aria-label="Click to add to calendar">
+            <a href="/myevents.ics" aria-label="Click to add to calendar">
               <CalendarIcon /> Add to Calendar
             </a>
           </div>
