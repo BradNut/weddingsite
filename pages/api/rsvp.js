@@ -10,7 +10,7 @@ export default withSession(async (req, res) => {
     session,
   } = req;
 
-  const user = session.get('user');
+  const { user } = session;
 
   if (!user?.isLoggedIn) {
     res.status(401).end();

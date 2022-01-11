@@ -40,42 +40,42 @@ const weddingParty = [
   {
     name: 'Best Man',
     title: 'Best Man',
-    imageUrl: '',
+    imageUrl: 'https://picsum.photos/1200/1600',
   },
   {
     name: 'Man/Maid of Honor',
     title: 'Man/Maid of Honor',
-    imageUrl: '',
+    imageUrl: 'https://picsum.photos/1200/1601',
   },
   {
     name: 'Groomsman',
     title: 'Groomsman',
-    imageUrl: '',
+    imageUrl: 'https://picsum.photos/1200/1602',
   },
   {
     name: 'Bridesmaid',
     title: 'Bridesmaid',
-    imageUrl: '',
+    imageUrl: 'https://picsum.photos/1200/1603',
   },
   {
     name: 'Groomsman',
     title: 'Groomsman',
-    imageUrl: '',
+    imageUrl: 'https://picsum.photos/1200/1604',
   },
   {
     name: 'Bridesmaid',
     title: 'Bridesmaid',
-    imageUrl: '',
+    imageUrl: 'https://picsum.photos/1200/1605',
   },
   {
     name: 'Groomsman',
     title: 'Groomsman',
-    imageUrl: '',
+    imageUrl: 'https://picsum.photos/1200/1606',
   },
   {
     name: 'Bridesmaid',
     title: 'Bridesmaid',
-    imageUrl: '',
+    imageUrl: 'https://picsum.photos/200/308',
   },
 ];
 
@@ -98,7 +98,7 @@ export default function PartyPage() {
       >
         <h1 className="center">Meet our Wedding Party</h1>
         <CustomNextImage
-          src="https://via.placeholder.com/450X800.png"
+          src="https://picsum.photos/800/450"
           alt="Wedding Party"
           height={450}
           width={800}
@@ -116,7 +116,7 @@ export default function PartyPage() {
         <PartyCard className="card">
           <h2 className="center">Officiant</h2>
           <CustomNextImage
-            src="https://via.placeholder.com/1200x1600.png"
+            src="https://picsum.photos/1200/1600"
             alt="Wedding Officiant"
             objectFit="cover"
             width="1200"
@@ -130,7 +130,7 @@ export default function PartyPage() {
           <PartyCard className="card" key={index}>
             <h2 className="center">{party.name}</h2>
             <CustomNextImage
-              src="https://via.placeholder.com/1200x1600.png"
+              src={party.imageUrl}
               alt={`${party.name} - ${party.title}`}
               objectFit="cover"
               width="1200"

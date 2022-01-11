@@ -17,7 +17,7 @@ export default withSession(async (req, res) => {
       role: 'guest',
     });
     const user = { isLoggedIn: true, id: result?._id };
-    req.session.set('user', user);
+    req.session.user = user;
     await req.session.save();
     res.status(201).json({ success: true });
   } catch (error) {

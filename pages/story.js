@@ -19,7 +19,7 @@ export default function StoryPage() {
       <PhotoPageStyles className="center">
         <h1>Our Story</h1>
         <CustomNextImage
-          src="https://via.placeholder.com/450X800.png"
+          src="https://picsum.photos/800/450"
           alt="Placeholder Our Story Image"
           height={450}
           width={800}

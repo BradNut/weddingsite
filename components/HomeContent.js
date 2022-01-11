@@ -11,7 +11,7 @@ export default function HomeContent() {
   return (
     <HomeStyles>
       <CustomNextImage
-        src="https://via.placeholder.com/800X1307.png"
+        src="https://picsum.photos/1307/880"
         height={880}
         width={1307}
         alt="Picture of Name and Name"

@@ -47,27 +47,27 @@ export default function PhotosPage() {
 
   const photos = [
     {
-      url: 'https://via.placeholder.com/1000x1000.png',
+      url: 'https://picsum.photos/1000/1000',
       alt: 'Photo 1',
     },
     {
-      url: 'https://via.placeholder.com/1000x1000.png',
+      url: 'https://picsum.photos/1000/1002',
       alt: 'Photo 2',
     },
     {
-      url: 'https://via.placeholder.com/1000x1000.png',
+      url: 'https://picsum.photos/1000/1003',
       alt: 'Photo 3',
     },
     {
-      url: 'https://via.placeholder.com/1000x1000.png',
+      url: 'https://picsum.photos/1000/1004',
       alt: 'Photo 4',
     },
     {
-      url: 'https://via.placeholder.com/1000x1000.png',
+      url: 'https://picsum.photos/1000/1005',
       alt: 'Photo 5',
     },
     {
-      url: 'https://via.placeholder.com/1000x1000.png',
+      url: 'https://picsum.photos/1000/1006',
       alt: 'Photo 6',
     },
   ];
