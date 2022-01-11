@@ -7,7 +7,7 @@ const protectedRoutes = [`${rootDomain}/register`, `${rootDomain}/createguest`];
 export default async function permissions(req, res) {
   const { method, session } = req;
 
-  const user = session.get('user');
+  const { user } = session;
 
   if (!user?.isLoggedIn) {
     res.status(401).end();
