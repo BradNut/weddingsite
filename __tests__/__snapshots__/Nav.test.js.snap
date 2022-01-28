@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Nav/> Renders nav correctly and matches snapshot 1`] = `
+<div>
+  <nav
+    class="NavStyles-sc-vewc8g-0 dWZdml"
+  >
+    <a
+      aria-current="page"
+      href="/"
+    >
+      Home
+    </a>
+    <a
+      href="/story"
+    >
+      Our Story
+    </a>
+    <a
+      href="/party"
+    >
+      Wedding Party
+    </a>
+    <a
+      href="/photos"
+    >
+      Photos
+    </a>
+    <a
+      href="/travelstay"
+    >
+      Travel & Stay
+    </a>
+    <a
+      href="/qanda"
+    >
+      Q + A
+    </a>
+    <a
+      href="/rsvp"
+    >
+      RSVP
+    </a>
+  </nav>
+</div>
+`;

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import useUser from '../lib/useUser';
 import HomeContent from '../components/HomeContent';
-import connectDb from '../utils/db';
 import Login from '../components/Login';
 import Layout from '../components/Layout';
 import buildBase64Data from '../utils/buildBase64Data';

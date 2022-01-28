@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "NODE_ENV=test jest --watch"
   },
   "dependencies": {
     "@plaiceholder/next": "^2.2.0",
@@ -66,6 +67,15 @@
     "rules": {
       "react/prop-types": 0
     }
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "./.jest/setEnvVars.js"
+    ],
+    "setupFilesAfterEnv": [
+      "./jest.setup.js"
+    ]
   },
   "//": "This is our babel config, I prefer this over a .babelrc file",
   "babel": {
