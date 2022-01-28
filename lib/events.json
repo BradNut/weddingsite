@@ -1,6 +1,6 @@
 [
   {
-    "name": "Wedding Practicing",
+    "name": "Wedding Rehearsal",
     "date": "Sunday, June 2nd, 2030",
     "start": "",
     "end": "",
@@ -12,7 +12,7 @@
     "scheduleEvents": []
   },
   {
-    "name": "Wedding Saying Hello",
+    "name": "Saying Hello",
     "date": "Sunday, June 2nd, 2030",
     "start": "9:00 PM",
     "end": "",
@@ -24,7 +24,7 @@
     "scheduleEvents": []
   },
   {
-    "name": "Wedding Saying I Do",
+    "name": "Saying I Do",
     "date": "Monday, June 3rd, 2030",
     "start": "5:00 PM",
     "end": "11:00 PM",
@@ -55,7 +55,7 @@
     ]
   },
   {
-    "name": "Wedding Saying Goodbye",
+    "name": "Saying Goodbye",
     "date": "Tuesday, June 4th, 2030",
     "start": "",
     "end": "",

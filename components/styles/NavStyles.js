@@ -11,7 +11,7 @@ const NavStyles = styled.nav`
 
   a,
   button {
-    padding: 1rem 3rem;
+    padding: 1rem 2.5rem;
     display: flex;
     align-items: center;
     position: relative;

@@ -9,9 +9,10 @@ const { compare } = bcrypt;
 export default withSession(async (req, res) => {
   const { username, password, penguin } = await req.body;
   // TODO: REMOVE THIS IF GOING TO PRODUCTION
-  // In production just await connectDB()
+  // In production just: const knex = await connectDb();
+  let knex;
   if (process.env.SITE_ENV !== 'TEST_SITE') {
-    await connectDb();
+    knex = await connectDb();
   }
 
   try {
@@ -25,9 +26,13 @@ export default withSession(async (req, res) => {
         await req.session.save();
         res.json(user);
       } else {
-        const userData = await User.findOne({ username: escape(username) });
+        const userData = await knex('users')
+          .where({
+            username: escape(username),
+          })
+          .first();
         const savedPassword = userData?.password || '';
-        isAuthorized = await compare(password, savedPassword);
+        isAuthorized = await compare(escape(password), savedPassword);
         if (isAuthorized) {
           const user = { isLoggedIn: isAuthorized, id: userData._id };
           req.session.user = user;
