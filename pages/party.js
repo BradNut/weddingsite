@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import styled from 'styled-components';
+import Image from 'next/image';
 import Layout from '../components/Layout';
 import useUser from '../lib/useUser';
-import CustomNextImage from '../components/CustomNextImage';
+import { weddingParty } from '../utils/imageData';
+import buildBase64Data from '../utils/buildBase64Data';
 
 const PartyPageStyles = styled.div`
   display: grid;
@@ -36,50 +38,7 @@ const PartyCard = styled.div`
   }
 `;
 
-const weddingParty = [
-  {
-    name: 'Best Man',
-    title: 'Best Man',
-    imageUrl: 'https://picsum.photos/1200/1600',
-  },
-  {
-    name: 'Man/Maid of Honor',
-    title: 'Man/Maid of Honor',
-    imageUrl: 'https://picsum.photos/1200/1601',
-  },
-  {
-    name: 'Groomsman',
-    title: 'Groomsman',
-    imageUrl: 'https://picsum.photos/1200/1602',
-  },
-  {
-    name: 'Bridesmaid',
-    title: 'Bridesmaid',
-    imageUrl: 'https://picsum.photos/1200/1603',
-  },
-  {
-    name: 'Groomsman',
-    title: 'Groomsman',
-    imageUrl: 'https://picsum.photos/1200/1604',
-  },
-  {
-    name: 'Bridesmaid',
-    title: 'Bridesmaid',
-    imageUrl: 'https://picsum.photos/1200/1605',
-  },
-  {
-    name: 'Groomsman',
-    title: 'Groomsman',
-    imageUrl: 'https://picsum.photos/1200/1606',
-  },
-  {
-    name: 'Bridesmaid',
-    title: 'Bridesmaid',
-    imageUrl: 'https://picsum.photos/200/308',
-  },
-];
-
-export default function PartyPage() {
+export default function PartyPage({ mainImage, officiantImage, partyImages }) {
   const { user } = useUser({ redirectTo: '/login' });
 
   if (!user || user.isLoggedIn === false) {
@@ -97,11 +56,10 @@ export default function PartyPage() {
         }}
       >
         <h1 className="center">Meet our Wedding Party</h1>
-        <CustomNextImage
-          src="https://picsum.photos/800/450"
-          alt="Wedding Party"
-          height={450}
-          width={800}
+        <Image
+          {...mainImage?.imageProps}
+          alt={mainImage?.alt}
+          placeholder="blur"
         />
       </div>
       <h2 className="center">The Party</h2>
@@ -115,31 +73,56 @@ export default function PartyPage() {
       >
         <PartyCard className="card">
           <h2 className="center">Officiant</h2>
-          <CustomNextImage
-            src="https://picsum.photos/1200/1600"
-            alt="Wedding Officiant"
-            objectFit="cover"
-            width="1200"
-            height="1600"
+          <Image
+            {...officiantImage?.imageProps}
+            alt={officiantImage?.alt}
+            placeholder="blur"
           />
           <h3 className="center">Wedding Officiant</h3>
         </PartyCard>
       </div>
       <PartyStyles>
-        {weddingParty.map((party, index) => (
+        {partyImages.map((member, index) => (
           <PartyCard className="card" key={index}>
-            <h2 className="center">{party.name}</h2>
-            <CustomNextImage
-              src={party.imageUrl}
-              alt={`${party.name} - ${party.title}`}
-              objectFit="cover"
-              width="1200"
-              height="1600"
-            />
-            <h3 className="center">{party.title}</h3>
+            <h2 className="center">{member.name}</h2>
+            <Image {...member.imageProps} alt={member.alt} placeholder="blur" />
+            <h3 className="center">{member.title}</h3>
           </PartyCard>
         ))}
       </PartyStyles>
     </PartyPageStyles>
   );
+}
+
+export async function getStaticProps() {
+  const partyImages = [];
+  for (const member of weddingParty) {
+    const imageData = await buildBase64Data(false, member.url, member.alt, {
+      name: member.name,
+      title: member.title,
+    });
+    partyImages.push(imageData);
+  }
+
+  const mainImage = await buildBase64Data(
+    false,
+    'https://picsum.photos/800/450',
+    'Wedding Party',
+    {}
+  );
+
+  const officiantImage = await buildBase64Data(
+    false,
+    'https://picsum.photos/1200/1600',
+    'Wedding Officiant',
+    {}
+  );
+
+  return {
+    props: {
+      mainImage,
+      officiantImage,
+      partyImages,
+    },
+  };
 }

@@ -1,5 +1,5 @@
+import Image from 'next/image';
 import styled from 'styled-components';
-import CustomNextImage from './CustomNextImage';
 import Timeline from './Timeline';
 
 const HomeStyles = styled.div`
@@ -7,16 +7,10 @@ const HomeStyles = styled.div`
   justify-items: center;
 `;
 
-export default function HomeContent() {
+export default function HomeContent({ alt, imageProps }) {
   return (
     <HomeStyles>
-      <CustomNextImage
-        src="https://picsum.photos/1307/880"
-        height={880}
-        width={1307}
-        alt="Picture of Name and Name"
-        blur
-      />
+      <Image {...imageProps} alt={alt} placeholder="blur" />
       <Timeline />
     </HomeStyles>
   );

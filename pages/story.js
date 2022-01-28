@@ -1,10 +1,11 @@
 import Head from 'next/head';
-import CustomNextImage from '../components/CustomNextImage';
+import Image from 'next/image';
 import Layout from '../components/Layout';
 import useUser from '../lib/useUser';
+import buildBase64Data from '../utils/buildBase64Data';
 import { PhotoPageStyles } from './photos';
 
-export default function StoryPage() {
+export default function StoryPage({ alt, imageProps }) {
   const { user } = useUser({ redirectTo: '/login' });
 
   if (!user || user.isLoggedIn === false) {
@@ -18,12 +19,7 @@ export default function StoryPage() {
       </Head>
       <PhotoPageStyles className="center">
         <h1>Our Story</h1>
-        <CustomNextImage
-          src="https://picsum.photos/800/450"
-          alt="Placeholder Our Story Image"
-          height={450}
-          width={800}
-        />
+        <Image {...imageProps} alt={alt} placeholder="blur" />
         <p>
           Our story Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Natus, illo. Vitae rerum officia, commodi atque reprehenderit tempore
@@ -33,4 +29,13 @@ export default function StoryPage() {
       </PhotoPageStyles>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const src = 'https://picsum.photos/800/450';
+  const data = await buildBase64Data(false, src, 'Picture of us');
+
+  return {
+    props: { ...data },
+  };
 }

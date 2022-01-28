@@ -1,9 +1,11 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { RiExternalLinkLine } from 'react-icons/ri';
 import styled from 'styled-components';
-import CustomNextImage from '../components/CustomNextImage';
 import Layout from '../components/Layout';
 import useUser from '../lib/useUser';
+import buildBase64Data from '../utils/buildBase64Data';
+import { photos } from '../utils/imageData';
 
 export const PhotoPageStyles = styled.div`
   display: grid;
@@ -38,39 +40,12 @@ export const PhotosStyles = styled.div`
   }
 `;
 
-export default function PhotosPage() {
+export default function PhotosPage({ images }) {
   const { user } = useUser({ redirectTo: '/login' });
 
   if (!user || user.isLoggedIn === false) {
     return <Layout>Loading...</Layout>;
   }
-
-  const photos = [
-    {
-      url: 'https://picsum.photos/1000/1000',
-      alt: 'Photo 1',
-    },
-    {
-      url: 'https://picsum.photos/1000/1002',
-      alt: 'Photo 2',
-    },
-    {
-      url: 'https://picsum.photos/1000/1003',
-      alt: 'Photo 3',
-    },
-    {
-      url: 'https://picsum.photos/1000/1004',
-      alt: 'Photo 4',
-    },
-    {
-      url: 'https://picsum.photos/1000/1005',
-      alt: 'Photo 5',
-    },
-    {
-      url: 'https://picsum.photos/1000/1006',
-      alt: 'Photo 6',
-    },
-  ];
 
   return (
     <div>
@@ -88,13 +63,14 @@ export default function PhotosPage() {
           Link to full photo gallery <RiExternalLinkLine />
         </a>
         <PhotosStyles>
-          {photos.map((photo) => (
-            <CustomNextImage
-              key={photo.alt}
-              src={photo.url}
-              alt={photo.alt}
-              height={1000}
-              width={1000}
+          {images.map((image) => (
+            <Image
+              {...image?.imageProps}
+              alt={image?.alt}
+              width={image.width}
+              height={image.height}
+              objectFit="cover"
+              placeholder="blur"
             />
           ))}
         </PhotosStyles>
@@ -109,4 +85,21 @@ export default function PhotosPage() {
       </PhotoPageStyles>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const images = [];
+  for (const photo of photos) {
+    const imageData = await buildBase64Data(false, photo.url, photo.alt, {
+      width: 1000,
+      height: 1000,
+    });
+    images.push(imageData);
+  }
+
+  return {
+    props: {
+      images,
+    },
+  };
 }

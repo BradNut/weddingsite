@@ -2,20 +2,23 @@ import { getPlaiceholder } from 'plaiceholder';
 import { buildUrl } from 'cloudinary-build-url';
 
 export default async function buildBase64Data(
-  imageName,
+  cloudinaryUrl,
+  imageSource,
   alt,
   additionalProps = {}
 ) {
-  const folderName = process.env.PUBLIC_FOLDER_NAME;
-  const cloudName = process.env.PUBLIC_CLOUD_NAME;
-  let imagePath;
+  let imagePath = imageSource;
+  if (cloudinaryUrl) {
+    const folderName = process.env.PUBLIC_FOLDER_NAME;
+    const cloudName = process.env.PUBLIC_CLOUD_NAME;
 
-  if (imageName && alt && additionalProps) {
-    imagePath = buildUrl(`${folderName}/${imageName}`, {
-      cloud: {
-        cloudName,
-      },
-    });
+    if (imageSource && alt && additionalProps) {
+      imagePath = buildUrl(`${folderName}/${imageSource}`, {
+        cloud: {
+          cloudName,
+        },
+      });
+    }
   }
 
   if (imagePath) {
