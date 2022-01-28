@@ -68,7 +68,7 @@ export default function Footer() {
         )}
       </div>
       <div>
-        <p>Created by Bradley</p>
+        <p>Created by Bradley Shellnut</p>
         <div>
           Icons made by{' '}
           <a href="https://www.freepik.com" title="Freepik">

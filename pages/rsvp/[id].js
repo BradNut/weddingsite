@@ -232,7 +232,7 @@ export default function SingleGroupPage({ group }) {
         <title key="title">N & N | RSVP</title>
       </Head>
       <RSVPGroupStyles>
-        <h2>Wedding SAYING I DO</h2>
+        <h2>Saying I Do</h2>
         <div>
           <a href="/myevents.ics" aria-label="Add to calendar">
             <CalendarIcon />
@@ -365,7 +365,7 @@ export default function SingleGroupPage({ group }) {
           <legend>Additional Notes?</legend>
           <label htmlFor="note">
             <p className="sr-only">
-              Enter additional notes your want to ask Irene and Bradley
+              Enter additional notes your want to ask us?
             </p>
             <textarea
               name="note"
