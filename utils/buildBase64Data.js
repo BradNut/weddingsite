@@ -5,7 +5,8 @@ export default async function buildBase64Data(
   cloudinaryUrl,
   imageSource,
   alt,
-  additionalProps = {}
+  additionalProps = {},
+  transformations = {}
 ) {
   let imagePath = imageSource;
   if (cloudinaryUrl) {
@@ -17,6 +18,7 @@ export default async function buildBase64Data(
         cloud: {
           cloudName,
         },
+        transformations,
       });
     }
   }
