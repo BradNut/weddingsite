@@ -26,13 +26,18 @@ export default withSession(async (req, res) => {
 
     try {
       const result = await knex('guests')
-        .where(function () {
-          this.where(
-            'first_name',
-            'like',
-            `%${escape(firstName.trim())}%`
-          ).where('last_name', 'like', `%${escape(lastName.trim())}%`);
-        })
+        .where(
+          knex.raw(
+            'LOWER("first_name") = ?',
+            `${escape(firstName.trim()).toLowerCase()}`
+          )
+        )
+        .andWhere(
+          knex.raw(
+            'LOWER("last_name") = ?',
+            `${escape(lastName.trim()).toLowerCase()}`
+          )
+        )
         .select(
           'first_name',
           'last_name',

@@ -4,7 +4,8 @@ import { buildUrl } from 'cloudinary-build-url';
 export default async function buildBase64Data(
   imageName,
   alt,
-  additionalProps = {}
+  additionalProps = {},
+  transformations = {}
 ) {
   const folderName = process.env.PUBLIC_FOLDER_NAME;
   const cloudName = process.env.PUBLIC_CLOUD_NAME;
@@ -15,6 +16,7 @@ export default async function buildBase64Data(
       cloud: {
         cloudName,
       },
+      transformations,
     });
   }
 
