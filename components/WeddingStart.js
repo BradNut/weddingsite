@@ -14,7 +14,7 @@ function useWeddingStart({ update = 60000 }) {
 }
 
 export default function WeddingStart() {
-  const { timeToWedding, timeAsDays } = useWeddingStart({
+  const { timeAsDays } = useWeddingStart({
     update: 60000,
   });
 

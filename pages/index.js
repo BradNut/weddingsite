@@ -11,7 +11,7 @@ const LandingStyles = styled.div`
 `;
 
 export default function Home({ alt, imageProps }) {
-  const { user, mutateUser } = useUser();
+  const { user } = useUser();
 
   if (!user) {
     return (

@@ -27,7 +27,7 @@ export default function Event({ event }) {
     venueName,
     attire,
     description,
-    openToAll,
+    // openToAll,
     showSchedule,
     scheduleEvents,
   } = event;

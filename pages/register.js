@@ -22,12 +22,12 @@ const FormStyles = styled.form`
 export default function RegisterPage() {
   const router = useRouter();
 
-  const { inputs, handleChange, clearForm, resetForm } = useForm({
+  const { inputs, handleChange } = useForm({
     username: '',
     password: '',
   });
 
-  const { mutateUser } = useUser({
+  useUser({
     redirectTo: '/',
     redirectIfFound: true,
   });

@@ -21,7 +21,7 @@ const HeaderStyles = styled.header`
 `;
 
 const Header = () => {
-  const { user, mutateUser } = useUser();
+  const { user } = useUser();
   return (
     <HeaderStyles>
       <div>

@@ -1,4 +1,4 @@
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import fetchJson from '../lib/fetchJson';
 import useUser from '../lib/useUser';
@@ -15,7 +15,7 @@ async function logout(router) {
       });
     });
   } catch (e) {
-    console.error();
+    console.error(e);
   }
 }
 

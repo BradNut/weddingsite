@@ -173,8 +173,7 @@ export default function SingleGroupPage({ group }) {
     return initial;
   }
 
-  const { inputs, handleChange, clearForm, resetForm } =
-    useForm(getInitialFormData);
+  const { inputs, handleChange } = useForm(getInitialFormData);
 
   if (!user || user.isLoggedIn === false) {
     return <Layout>Loading...</Layout>;
@@ -185,8 +184,8 @@ export default function SingleGroupPage({ group }) {
   async function handleSubmit(groupId) {
     const keys = Object.keys(inputs);
     const guestData = [];
-    // console.log(JSON.stringify(inputs));
-    keys.forEach((key, index) => {
+
+    keys.forEach((key) => {
       if (key !== 'note') {
         guestData.push({
           id: key,

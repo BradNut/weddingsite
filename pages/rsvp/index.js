@@ -22,7 +22,7 @@ const ErrorContactStyles = styled.p`
 export default function RsvpPage() {
   const router = useRouter();
 
-  const { inputs, handleChange, clearForm, resetForm } = useForm({
+  const { inputs, handleChange } = useForm({
     firstName: '',
     lastName: '',
   });
@@ -31,13 +31,13 @@ export default function RsvpPage() {
   const [errorCount, setErrorCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  const { user, mutateUser } = useUser({ redirectTo: '/login' });
+  const { user } = useUser({ redirectTo: '/login' });
 
   if (!user || user.isLoggedIn === false) {
     return <Layout>Loading...</Layout>;
   }
 
-  async function handleSubmit(firstName, lastName, groupId) {
+  async function handleSubmit(firstName, lastName) {
     const body = {
       firstName,
       lastName,

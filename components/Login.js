@@ -83,7 +83,7 @@ const FormStyles = styled.form`
 const Login = () => {
   const router = useRouter();
 
-  const { inputs, handleChange, clearForm, resetForm } = useForm({
+  const { inputs, handleChange } = useForm({
     username: 'weddinguser',
     password: '',
     penguin: 'penguin',
@@ -105,7 +105,7 @@ const Login = () => {
     };
 
     try {
-      const res = await mutateUser(
+      await mutateUser(
         fetchJson('/api/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
