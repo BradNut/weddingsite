@@ -61,7 +61,7 @@ export default function PlusOneRSVP({ guest, inputs, handleChange }) {
     handleChange({
       target: {
         value: !inputs[`${guest.id}`].plusOne,
-        name: `${guest.id}-plusOne`,
+        name: `${guest.id}_plusOne`,
         type: 'text',
       },
     });
@@ -100,16 +100,16 @@ export default function PlusOneRSVP({ guest, inputs, handleChange }) {
         <div className="plusone__names">
           <input
             type="text"
-            id={`${guest.id}-plusOneFirstName`}
-            name={`${guest.id}-plusOneFirstName`}
+            id={`${guest.id}_plusOneFirstName`}
+            name={`${guest.id}_plusOneFirstName`}
             placeholder="First Name"
             value={inputs[`${guest.id}`]?.plusOneFirstName}
             onChange={handleChange}
           />
           <input
             type="text"
-            id={`${guest.id}-plusOneLastName`}
-            name={`${guest.id}-plusOneLastName`}
+            id={`${guest.id}_plusOneLastName`}
+            name={`${guest.id}_plusOneLastName`}
             placeholder="Last Name"
             value={inputs[`${guest.id}`]?.plusOneLastName}
             onChange={handleChange}

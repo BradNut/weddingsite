@@ -209,7 +209,7 @@ export default function SingleGroupPage({ group }) {
 
       if (res.message === 'SUCCESS') {
         setMessage(
-          `Successfully submited your RSVP${
+          `Successfully submitted your RSVP${
             body.guests.length > 1 ? 's' : ''
           }. Don't forget to save the date!!`
         );
@@ -300,15 +300,15 @@ export default function SingleGroupPage({ group }) {
               // eslint-disable-next-line react/prop-types
               group?.guests?.map((guest) =>
                 !guest.isPlusOne ? (
-                  <QuestionStyles key={`${guest?.id}-dietaryNotes`}>
+                  <QuestionStyles key={`${guest?.id}_dietaryNotes`}>
                     <p>
                       {guest.firstName} {guest.lastName} :
                     </p>
-                    <label htmlFor={`${guest.id}-dietaryNotes`}>
+                    <label htmlFor={`${guest.id}_dietaryNotes`}>
                       <p className="sr-only">{`Enter dietery restrictions for ${guest.firstName} ${guest.lastName}`}</p>
                       <textarea
-                        name={`${guest.id}-dietaryNotes`}
-                        id={`${guest.id}-dietaryNotes`}
+                        name={`${guest.id}_dietaryNotes`}
+                        id={`${guest.id}_dietaryNotes`}
                         cols="30"
                         rows="2"
                         placeholder="Example: Nut allergy, Fish, etc."
@@ -336,15 +336,15 @@ export default function SingleGroupPage({ group }) {
               // eslint-disable-next-line react/prop-types
               group?.guests?.map((guest) =>
                 !guest?.isPlusOne ? (
-                  <QuestionStyles key={`${guest?.id}-songRequests`}>
+                  <QuestionStyles key={`${guest?.id}_songRequests`}>
                     <p>
                       {guest.firstName} {guest.lastName}:
                     </p>
-                    <label htmlFor={`${guest.id}-songRequests`}>
+                    <label htmlFor={`${guest.id}_songRequests`}>
                       <p className="sr-only">{`Enter song requests for ${guest.firstName} ${guest.lastName}`}</p>
                       <textarea
-                        name={`${guest.id}-songRequests`}
-                        id={`${guest.id}-songRequests`}
+                        name={`${guest.id}_songRequests`}
+                        id={`${guest.id}_songRequests`}
                         cols="30"
                         rows="2"
                         placeholder="Example: Paint It Black - Rolling Stones"
@@ -420,7 +420,7 @@ export async function getServerSideProps({ params }) {
       group.id = params.id;
       group.guests = [
         {
-          id: 'TEST_GUEST_ID_12345',
+          id: 'TEST-GUEST-ID-12345',
           firstName: 'Test',
           lastName: 'Lastname',
           rsvpStatus: false,

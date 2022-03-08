@@ -82,24 +82,24 @@ export default function GuestRSVP({ guest, inputs, handleChange }) {
         </h3>
         <input
           type="radio"
-          id={`${guest.id}-accepted`}
-          name={`${guest.id}-rsvpStatus`}
+          id={`${guest.id}_accepted`}
+          name={`${guest.id}_rsvpStatus`}
           value="accepted"
           checked={inputs[guest.id]?.rsvpStatus === 'accepted'}
           onChange={handleChange}
         />
-        <label htmlFor={`${guest.id}-accepted`}>
+        <label htmlFor={`${guest.id}_accepted`}>
           {inputs[guest.id]?.rsvpStatus === 'accepted' ? 'Accepted' : 'Accept'}
         </label>
         <input
           type="radio"
-          id={`${guest.id}-declined`}
-          name={`${guest.id}-rsvpStatus`}
+          id={`${guest.id}_declined`}
+          name={`${guest.id}_rsvpStatus`}
           value="declined"
           checked={inputs[guest.id]?.rsvpStatus === 'declined'}
           onChange={handleChange}
         />
-        <label htmlFor={`${guest.id}-declined`}>
+        <label htmlFor={`${guest.id}_declined`}>
           {inputs[guest.id]?.rsvpStatus === 'declined' ? 'Declined' : 'Decline'}
         </label>
       </GuestStyles>

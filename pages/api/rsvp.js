@@ -19,7 +19,7 @@ export default withSession(async (req, res) => {
 
   // TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION
   if (process.env.SITE_ENV === 'TEST_SITE') {
-    res.status(200).json({ status: 'SUCCESS', groupId: 'TESTID_12345' });
+    res.status(200).json({ status: 'SUCCESS', groupId: 'TESTID-12345' });
   } else {
     await connectDb();
     const { firstName, lastName } = await req.body;
