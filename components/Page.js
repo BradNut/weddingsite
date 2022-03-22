@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
 import 'normalize.css';
+import Image from 'next/image';
 import Header from './Header';
 import Typography from './Typography';
 import Footer from './Footer';
@@ -105,9 +106,6 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     width: 100%;
-    background-image: url('https://res.cloudinary.com/royvalentinedev/image/upload/v1621792514/wedding/Background_u0cgyd.png');
-    background-repeat: no-repeat;
-    background-size: cover;
     background-color: var(--seaFoamBlue);
     font-size: 62.5%;
     box-sizing: border-box;
@@ -332,11 +330,28 @@ const ContentStyles = styled.main`
   }
 `;
 
+const BackgroundImageStyles = styled.div`
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
+`;
+
 export default function Page({ children }) {
   return (
     <div>
       <GlobalStyles />
       <Typography />
+      <BackgroundImageStyles>
+        <Image
+          alt=""
+          src="/assets/images/Background.png"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+        />
+      </BackgroundImageStyles>
       <LayoutStyles>
         <Header />
         <ContentStyles>{children}</ContentStyles>
