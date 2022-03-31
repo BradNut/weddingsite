@@ -30,7 +30,7 @@ export default function QandAPage() {
   return (
     <div>
       <Head>
-        <title key="title">N & N | QA</title>
+        <title key="title">N & N | Q & A</title>
       </Head>
       <h1 className="center">Q & A</h1>
       <QAStyles>

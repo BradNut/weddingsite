@@ -20,7 +20,7 @@ export default function Nav() {
         <a>Travel & Stay</a>
       </NavLink>
       <NavLink href="/qanda">
-        <a>Q + A</a>
+        <a>Q & A</a>
       </NavLink>
       <NavLink href="/rsvp">
         <a>RSVP</a>
