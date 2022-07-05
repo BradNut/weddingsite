@@ -168,7 +168,9 @@ const Login = () => {
             onChange={handleChange}
             className="penguin"
           />
-          <button type="submit">Login</button>
+          <button type="submit" className="umami--click--login">
+            Login
+          </button>
         </fieldset>
       </FormStyles>
     </div>

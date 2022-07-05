@@ -7,6 +7,7 @@ import Form from '../../components/styles/Form';
 import fetchJson from '../../lib/fetchJson';
 import useForm from '../../lib/useForm';
 import useUser from '../../lib/useUser';
+import { handleUmamiEvent } from '../../utils/handleUmamiEvent';
 
 const RSVPStyles = styled.div`
   display: grid;
@@ -51,17 +52,19 @@ export default function RsvpPage() {
       });
 
       if (res.status === 'SUCCESS') {
+        handleUmamiEvent('Fetch RSVP SUCCESS', 'success-fetch-rsvp');
         router.push({
           pathname: `/rsvp/${res.groupId}`,
         });
       } else {
+        handleUmamiEvent('Fetch RSVP FAILURE', 'failure-fetch-rsvp');
         setErrorCount(errorCount + 1);
         setErrorMsg('Unable to RSVP');
       }
     } catch (error) {
       // console.error('An unexpected error happened:', error);
       setErrorCount(errorCount + 1);
-      setErrorMsg('Unable to RSVP');
+      setErrorMsg('Unable to find your RSVP');
     }
   }
 
@@ -115,7 +118,9 @@ export default function RsvpPage() {
               onChange={handleChange}
             />
           </label>
-          <button type="submit">Click to RSVP</button>
+          <button type="submit" className="umami--click--find-rsvp">
+            Find Your RSVP
+          </button>
         </fieldset>
       </Form>
     </RSVPStyles>

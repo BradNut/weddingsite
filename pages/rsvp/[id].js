@@ -12,6 +12,7 @@ import Guest from '../../models/Guest';
 import connectDb from '../../utils/db';
 import { CalendarIcon, MapIcon } from '../../lib/svgs';
 import Modal from '../../components/Modal';
+import { handleUmamiEvent } from '../../utils/handleUmamiEvent';
 
 const RSVPGroupStyles = styled.div`
   h2 {
@@ -211,6 +212,7 @@ export default function SingleGroupPage({ group }) {
       console.log('res.message', res.message);
 
       if (res.message === 'SUCCESS') {
+        handleUmamiEvent('RSVP SUCCESS', 'success-rsvp');
         setMessage(
           `Successfully submitted your RSVP${
             body.guests.length > 1 ? 's' : ''
@@ -218,6 +220,7 @@ export default function SingleGroupPage({ group }) {
         );
         openModal();
       } else {
+        handleUmamiEvent('RSVP FAILURE', 'failure-rsvp');
         setErrorCount(errorCount + 1);
         setErrorMsg('Unable to RSVP Your Group');
       }

@@ -65,6 +65,13 @@ function MyApp({ Component, pageProps }) {
             as="font"
             crossOrigin=""
           />
+          <script
+            async
+            defer
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            src={process.env.NEXT_PUBLIC_UMAMI_URL}
+            data-do-not-track="true"
+          />
           <noscript>
             <link rel="stylesheet" href="assets/css/noscript.css" />
           </noscript>
