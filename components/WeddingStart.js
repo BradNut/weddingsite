@@ -1,17 +1,4 @@
-import { useState } from 'react';
-import useInterval from '../utils/useInterval';
-
-function useWeddingStart({ update = 60000 }) {
-  const weddingDate = 1906736400000;
-  const [timeToWedding, setTime] = useState(weddingDate - Date.now());
-  useInterval(() => {
-    setTime(weddingDate - Date.now());
-  }, update);
-  return {
-    timeToWedding,
-    timeAsDays: Math.ceil(timeToWedding / 1000 / 60 / 60 / 24),
-  };
-}
+import useWeddingStart from '../lib/useWeddingStart';
 
 export default function WeddingStart() {
   const { timeAsDays } = useWeddingStart({

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import useUser from '../lib/useUser';
 import WeddingStart from './WeddingStart';
 import Nav from './Nav';
+import useWeddingStart from '../lib/useWeddingStart';
 
 const HeaderStyles = styled.header`
   display: grid;
@@ -22,6 +23,10 @@ const HeaderStyles = styled.header`
 
 const Header = () => {
   const { user } = useUser();
+  const { timeAsDays, pastWeddingDate } = useWeddingStart({
+    update: 60000,
+  });
+
   return (
     <HeaderStyles>
       <div>
@@ -30,11 +35,9 @@ const Header = () => {
             <h1 className="center">Name & Name</h1>
           </a>
         </Link>
-        {user && user.isLoggedIn === true ? (
+        {user && user.isLoggedIn === true && !pastWeddingDate ? (
           <>
-            <h2 className="center">
-              June 3rd, 2030 &#8226; New York, New York
-            </h2>
+            <h2 className="center">June 3rd, 2030 @ New York, New York</h2>
             <h3 className="center">
               Countdown: <WeddingStart /> days!
             </h3>

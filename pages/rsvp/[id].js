@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { unescape } from 'html-escaper';
 import GuestRSVP from '../../components/GuestRSVP';
 import Layout from '../../components/Layout';
 import useForm from '../../lib/useForm';
@@ -139,7 +140,7 @@ const ModalContentStyles = styled.div`
 `;
 
 export default function SingleGroupPage({ group }) {
-  const { guests, note } = group;
+  const { guests, note, statusUpdatable } = group;
   const { user } = useUser({ redirectTo: '/login' });
   const [errorMsg, setErrorMsg] = useState('');
   const [errorCount, setErrorCount] = useState(0);
@@ -274,8 +275,22 @@ export default function SingleGroupPage({ group }) {
             </a>
           </ErrorContactStyles>
         )}
-        <fieldset aria-busy={loading} disabled={loading}>
+        <fieldset aria-busy={loading} disabled={loading || !statusUpdatable}>
           <legend>RSVP Invitation</legend>
+          <p>Make sure to click the "Submit RSVP" button at the bottom!</p>
+          {statusUpdatable && (
+            <p>
+              Please accept or decline for each person in your party. You can
+              always update your response until the RSVP deadline.
+            </p>
+          )}
+          {!statusUpdatable && (
+            <p>
+              This section is no longer updatable. If you need to make changes
+              please contact us at{' '}
+              <a href="mailto:name@example.com">name@example.com</a>
+            </p>
+          )}
           {group.guests.map((guest) => (
             <GuestRSVP
               key={guest.id}
@@ -433,6 +448,7 @@ export async function getServerSideProps({ params }) {
         },
       ];
       group.note = '';
+      group.statusUpdatable = true;
       return { props: { group } };
     }
 
@@ -448,8 +464,12 @@ export async function getServerSideProps({ params }) {
         firstName: guestData.firstName,
         lastName: guestData.lastName,
         rsvpStatus: guestData.rsvpStatus || '',
-        dietaryNotes: guestData.dietaryNotes || '',
-        songRequests: guestData.songRequests || '',
+        dietaryNotes: guestData.dietaryNotes
+          ? unescape(guestData.dietaryNotes)
+          : '',
+        songRequests: guestData.songRequests
+          ? unescape(guestData.songRequests)
+          : '',
         hasPlusOne: guestData.hasPlusOne || false,
         plusOne: guestData.plusOne || false,
         plusOneFirstName: guestData.plusOneFirstName || '',
@@ -458,7 +478,7 @@ export async function getServerSideProps({ params }) {
       guestList.push(guest);
     }
     group.guests = guestList;
-    group.note = groupData.note || '';
+    group.note = groupData.note ? unescape(groupData.note) : '';
 
     return { props: { group } };
   } catch (error) {

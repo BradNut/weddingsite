@@ -50,6 +50,7 @@ export default withSession(async (req, res) => {
         }
         response.guests = guestList;
         response.note = group?.note || '';
+        response.statusUpdatable = group?.statusUpdatable || false;
         // console.log('response', response);
         res.status(200).json(JSON.stringify(response));
       } catch (error) {
