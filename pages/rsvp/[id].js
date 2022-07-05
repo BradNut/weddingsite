@@ -208,6 +208,8 @@ export default function SingleGroupPage({ group }) {
         body: JSON.stringify(body),
       });
 
+      console.log('res.message', res.message);
+
       if (res.message === 'SUCCESS') {
         setMessage(
           `Successfully submitted your RSVP${

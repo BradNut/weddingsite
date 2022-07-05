@@ -63,7 +63,7 @@ export default withSession(async (req, res) => {
         // TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION
         if (process.env.SITE_ENV === 'TEST_SITE') {
           console.log('DONE!');
-          res.status(200).json(JSON.stringify({ message: 'SUCCESS' }));
+          res.status(200).json({ message: 'SUCCESS' });
         } else {
           const { groupId, guests, note } = body;
           for (const guest of guests) {
@@ -85,7 +85,7 @@ export default withSession(async (req, res) => {
           await Group.findByIdAndUpdate(groupId, {
             note: escape(note),
           });
-          res.status(200).json(JSON.stringify({ message: 'SUCCESS' }));
+          res.status(200).json({ message: 'SUCCESS' });
         }
       } catch (error) {
         const { response: fetchResponse } = error;
