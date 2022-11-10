@@ -54,9 +54,7 @@ export default function Footer() {
     <FooterStyles>
       <div>
         <h2>
-          <Link href="/">
-            <a>N & N</a>
-          </Link>
+          <Link href="/">N & N</Link>
         </h2>
         {user && user.isLoggedIn === true ? (
           <>

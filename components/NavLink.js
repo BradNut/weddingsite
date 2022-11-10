@@ -2,18 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export const NavLink = ({ children, href }) => {
-  const child = React.Children.only(children);
-  const router = useRouter();
+export const NavLink = ({ href, children }) => {
+  const { asPath } = useRouter();
+  const ariaCurrent = href === asPath ? 'page' : undefined;
 
   return (
-    <Link href={href}>
-      {React.cloneElement(child, {
-        'aria-current':
-          router.pathname === href || router.pathname.includes(`${href}/`)
-            ? 'page'
-            : null,
-      })}
+    <Link prefetch href={href} aria-current={ariaCurrent}>
+      {children}
     </Link>
   );
 };

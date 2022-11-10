@@ -69,7 +69,7 @@ export default function PhotosPage({ images }) {
               alt={image?.alt}
               width={image.width}
               height={image.height}
-              objectFit="cover"
+              // objectFit="cover"
               placeholder="blur"
             />
           ))}

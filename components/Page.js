@@ -344,13 +344,7 @@ export default function Page({ children }) {
       <GlobalStyles />
       <Typography />
       <BackgroundImageStyles>
-        <Image
-          alt=""
-          src="/assets/images/Background.png"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-        />
+        <Image alt="" src="/assets/images/Background.png" fill quality={100} />
       </BackgroundImageStyles>
       <LayoutStyles>
         <Header />

@@ -4,27 +4,13 @@ import NavStyles from './styles/NavStyles';
 export default function Nav() {
   return (
     <NavStyles>
-      <NavLink href="/">
-        <a>Home</a>
-      </NavLink>
-      <NavLink href="/story">
-        <a>Our Story</a>
-      </NavLink>
-      <NavLink href="/party">
-        <a>Wedding Party</a>
-      </NavLink>
-      <NavLink href="/photos">
-        <a>Photos</a>
-      </NavLink>
-      <NavLink href="/travelstay">
-        <a>Travel & Stay</a>
-      </NavLink>
-      <NavLink href="/qanda">
-        <a>Q & A</a>
-      </NavLink>
-      <NavLink href="/rsvp">
-        <a>RSVP</a>
-      </NavLink>
+      <NavLink href="/">Home</NavLink>
+      <NavLink href="/story">Our Story</NavLink>
+      <NavLink href="/party">Wedding Party</NavLink>
+      <NavLink href="/photos">Photos</NavLink>
+      <NavLink href="/travelstay">Travel & Stay</NavLink>
+      <NavLink href="/qanda">Q & A</NavLink>
+      <NavLink href="/rsvp">RSVP</NavLink>
     </NavStyles>
   );
 }

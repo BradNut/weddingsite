@@ -5,6 +5,7 @@ import { SWRConfig } from 'swr';
 import Page from '../components/Page';
 import '../components/styles/nprogress.css';
 import fetch from '../lib/fetchJson';
+import Script from 'next/script';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -65,7 +66,7 @@ function MyApp({ Component, pageProps }) {
             as="font"
             crossOrigin=""
           />
-          <script
+          <Script
             async
             defer
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}

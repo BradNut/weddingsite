@@ -31,9 +31,7 @@ const Header = () => {
     <HeaderStyles>
       <div>
         <Link href="/">
-          <a>
-            <h1 className="center">Name & Name</h1>
-          </a>
+          <h1 className="center">Name & Name</h1>
         </Link>
         {user && user.isLoggedIn === true && !pastWeddingDate ? (
           <>
