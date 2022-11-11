@@ -81,6 +81,10 @@ export default function PartyPage({ mainImage, officiantImage, partyImages }) {
             {...officiantImage?.imageProps}
             alt={officiantImage?.alt}
             placeholder="blur"
+            style={{
+              width: '100%',
+              height: 'auto',
+            }}
           />
           <h3 className="center">Wedding Officiant</h3>
         </PartyCard>
