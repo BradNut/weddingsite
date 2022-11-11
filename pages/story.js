@@ -19,7 +19,12 @@ export default function StoryPage({ alt, imageProps }) {
       </Head>
       <PhotoPageStyles className="center">
         <h1>Our Story</h1>
-        <Image {...imageProps} alt={alt} placeholder="blur" />
+        <Image {...imageProps} alt={alt} placeholder="blur"
+          style={{
+            width: '100%',
+            height: 'auto',
+          }}
+        />
         <p>
           Our story Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Natus, illo. Vitae rerum officia, commodi atque reprehenderit tempore
