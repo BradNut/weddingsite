@@ -60,6 +60,10 @@ export default function PartyPage({ mainImage, officiantImage, partyImages }) {
           {...mainImage?.imageProps}
           alt={mainImage?.alt}
           placeholder="blur"
+          style={{
+            width: '100%',
+            height: 'auto',
+          }}
         />
       </div>
       <h2 className="center">The Party</h2>
@@ -85,7 +89,12 @@ export default function PartyPage({ mainImage, officiantImage, partyImages }) {
         {partyImages.map((member, index) => (
           <PartyCard className="card" key={index}>
             <h2 className="center">{member.name}</h2>
-            <Image {...member.imageProps} alt={member.alt} placeholder="blur" />
+            <Image {...member.imageProps} alt={member.alt} placeholder="blur" 
+              style={{
+                width: '100%',
+                height: 'auto',
+              }}
+            />
             <h3 className="center">{member.title}</h3>
           </PartyCard>
         ))}
