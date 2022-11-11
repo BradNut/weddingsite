@@ -71,6 +71,10 @@ export default function PhotosPage({ images }) {
               height={image.height}
               // objectFit="cover"
               placeholder="blur"
+              style={{
+                width: '100%',
+                height: 'auto',
+              }}
             />
           ))}
         </PhotosStyles>
