@@ -19,10 +19,14 @@ export default function StoryPage({ alt, imageProps }) {
       </Head>
       <PhotoPageStyles className="center">
         <h1>Our Story</h1>
-        <Image {...imageProps} alt={alt} placeholder="blur"
+        <Image
+          {...imageProps}
+          alt={alt}
+          placeholder="blur"
           style={{
             width: '100%',
-            height: 'auto',
+            height: '100%',
+            objectFit: 'cover',
           }}
         />
         <p>

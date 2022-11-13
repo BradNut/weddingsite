@@ -12,7 +12,7 @@ const Form = ({ errorMessage, onSubmit }) => (
 
     {errorMessage && <p className="error">{errorMessage}</p>}
 
-    <style jsx>{`
+    {/* <style jsx>{`
       form,
       label {
         display: flex;
@@ -31,7 +31,7 @@ const Form = ({ errorMessage, onSubmit }) => (
         color: brown;
         margin: 1rem 0 0;
       }
-    `}</style>
+    `}</style> */}
   </form>
 );
 

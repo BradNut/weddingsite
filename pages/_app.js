@@ -1,11 +1,11 @@
 import Head from 'next/head';
-import NProgress from 'nprogress';
+import Script from 'next/script';
 import { Router } from 'next/router';
 import { SWRConfig } from 'swr';
+import NProgress from 'nprogress';
 import Page from '../components/Page';
 import '../components/styles/nprogress.css';
 import fetch from '../lib/fetchJson';
-import Script from 'next/script';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -34,11 +34,7 @@ function MyApp({ Component, pageProps }) {
           <meta name="theme-color" content="#FCCFB9" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="Wedding Website" key="og:title" />
-          <meta
-            description="og:description"
-            content="Wedding Website"
-            key="ogdesc"
-          />
+          <meta property="og:description" content="Wedding Website" />
           <meta
             property="og:site_name"
             content="Wedding Website"

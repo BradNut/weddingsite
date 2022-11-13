@@ -62,7 +62,8 @@ export default function PartyPage({ mainImage, officiantImage, partyImages }) {
           placeholder="blur"
           style={{
             width: '100%',
-            height: 'auto',
+            height: '100%',
+            objectFit: 'cover',
           }}
         />
       </div>
@@ -83,7 +84,8 @@ export default function PartyPage({ mainImage, officiantImage, partyImages }) {
             placeholder="blur"
             style={{
               width: '100%',
-              height: 'auto',
+              height: '100%',
+              objectFit: 'cover',
             }}
           />
           <h3 className="center">Wedding Officiant</h3>
@@ -93,7 +95,10 @@ export default function PartyPage({ mainImage, officiantImage, partyImages }) {
         {partyImages.map((member, index) => (
           <PartyCard className="card" key={index}>
             <h2 className="center">{member.name}</h2>
-            <Image {...member.imageProps} alt={member.alt} placeholder="blur" 
+            <Image
+              {...member.imageProps}
+              alt={member.alt}
+              placeholder="blur"
               style={{
                 width: '100%',
                 height: 'auto',

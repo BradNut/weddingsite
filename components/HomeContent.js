@@ -10,10 +10,14 @@ const HomeStyles = styled.div`
 export default function HomeContent({ alt, imageProps }) {
   return (
     <HomeStyles>
-      <Image {...imageProps} alt={alt} placeholder="blur"
+      <Image
+        {...imageProps}
+        alt={alt}
+        placeholder="blur"
         style={{
           width: '100%',
-          height: 'auto',
+          height: '100%',
+          objectFit: 'cover',
         }}
       />
       <Timeline />
