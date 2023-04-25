@@ -118,7 +118,7 @@ export default function RsvpPage() {
               onChange={handleChange}
             />
           </label>
-          <button type="submit" className="umami--click--find-rsvp">
+          <button type="submit" data-umami-event="Find RSVP">
             Find Your RSVP
           </button>
         </fieldset>
