@@ -1,0 +1,69 @@
+[
+  {
+    "name": "Rehearsal",
+    "date": "Sunday, June 2nd, 2030",
+    "start": "",
+    "end": "",
+    "venueName": "",
+    "attire": "",
+    "description": "Rehearsal & Rehearsal Dinner",
+    "openToAll": true,
+    "showSchedule": false,
+    "scheduleEvents": []
+  },
+  {
+    "name": "Saying Hello",
+    "date": "Sunday, June 2nd, 2030",
+    "start": "9:00 PM",
+    "end": "",
+    "venueName": "",
+    "attire": "",
+    "description": "Come hang out with us and say hi! Location TBD",
+    "openToAll": true,
+    "showSchedule": false,
+    "scheduleEvents": []
+  },
+  {
+    "name": "Saying I Do",
+    "date": "Monday, June 3rd, 2030",
+    "start": "5:00 PM",
+    "end": "11:00 PM",
+    "venueName": "<div><h4>Central Park New York, NY, USA</h4></div>",
+    "attire": "",
+    "description": "",
+    "openToAll": true,
+    "showSchedule": false,
+    "scheduleEvents": [
+      {
+        "name": "Ceremony",
+        "start": "5:00 PM",
+        "end": "",
+        "venueName": "<div><h4>Central Park New York, NY, USA</h4></div>"
+      },
+      {
+        "name": "Cocktail Hour",
+        "start": "5:30 PM",
+        "end": "",
+        "venueName": "<div><h4>Central Park New York, NY, USA</h4></div>"
+      },
+      {
+        "name": "Dinner, Dancing, Dessert",
+        "start": "7:00 PM",
+        "end": "",
+        "venueName": "<div><h4>Central Park New York, NY, USA</h4></div>"
+      }
+    ]
+  },
+  {
+    "name": "Saying Goodbye",
+    "date": "Tuesday, June 4th, 2030",
+    "start": "9:00 AM",
+    "end": "11:30 AM",
+    "venueName": "",
+    "attire": "",
+    "description": "Farewell Brunch",
+    "openToAll": true,
+    "showSchedule": false,
+    "scheduleEvents": []
+  }
+]

@@ -1,59 +1,36 @@
-# Wedding Website
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## This is a skeleton template of the wedding website I created
+## Getting Started
 
-Features include:
-- Password login for site access
-- RSVP page for groups or individuals
-- Pages that include:
-  - Home Page
-  - Wedding Party
-  - Photos pages
-  - Q&A
-  - Travel information
-  - RSVP forms
+First, run the development server:
 
-## Detailed Info
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-Names, Dates, Locations are all hardcoded to a value
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-The site implements a basic auth with [next-iron-session](https://github.com/vvo/next-iron-session) to protect access without knowing the password to the site.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-The code is set up to use a MongoDB instace, ENV MONGO_URL, but this could easily be swapped for any DB. For the purposes of deploying this template for viewing the data is hardcoded.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-Use of CSS variables at a Layout level allows for theming and is easily extensible.
+## Learn More
 
-Adding, Updating, and Deleting of guests and groups is currently done manually on the DB or on a deployment of the admin specific branch.
+To learn more about Next.js, take a look at the following resources:
 
-This admin branch is not included yet in this example site as no roles or permissions have been set up. However, this branch does include  additional pages to add, edit, and delete these guests and groups.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-*If deploying to production please remove all sections that have the following:*
-```// TODO: REMOVE THIS WHEN TAKING YOUR SITE TO PRODUCTION```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Tech
+## Deploy on Vercel
 
-Overall a typical NextJS Application using ReactJS and basic authentication.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### Frontend
-
-- ReactJS
-- Styled Components
-- Images
-  - Loaded using either the default NextJS image with custom blur animation
-  - Or loading using Cloudinary on NextJS image and custom blur
-
-### Backend
-
-- NextJS APIs
-- Next Iron Session for Login
-  - Server side rendering of base pages checking to see if user is logged in
-  - Requires ENV variable of SECRET_COOKIE_PASSWORD to be set
-- Mongoose DB for MongoDB
-  - Used to store RSVPs and default logins
-
-## Future Changes
-1. On/Off feature for public vs password protected sites
-2. Build in auth permissions to allow guest vs admin roles
-3. If roles available then add in the admin pages for create, update, and deletion of guests/groups
-4. Add more theming options and easy customization of pages, resources, etc.
-5. Email reminder option
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

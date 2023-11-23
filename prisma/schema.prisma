@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+  id            String      @id @default(uuid())
+  username      String      @unique
+  roles         UserRole[]
+  auth_session  Session[]
+  key           Key[]
+  created_at  DateTime          @default(now()) @db.Timestamp(6)
+  updated_at  DateTime          @updatedAt  @db.Timestamp(6)
+
+  @@map("users")
+}
+
+enum RSVP_STATUS {
+  INVITED
+  ACCEPTED
+  DECLINED
+}
+
+model Guest {
+  id                  String  @id @default(uuid())
+  first_name          String
+  last_name           String
+  rsvp_status         RSVP_STATUS
+  dietary_notes       String
+  song_requests       String
+  has_plus_one        Boolean @default(false)
+  plus_one            Boolean @default(false)
+  plus_one_first_name String?
+  plus_one_last_name  String?
+  group               Group   @relation(fields: [group_id], references: [id])
+  group_id            String
+
+  @@map("guests")
+}
+
+model Group {
+  id              String @id @default(uuid())
+  name            String
+  note            String
+  rsvp_submitted  Boolean @default(false)
+  guests          Guest[]
+
+  @@map("groups")
+}
+
+model Role {
+  id                String      @id @default(uuid())
+  name              String      @unique
+  user_roles        UserRole[]
+  role_permissions  RolePermission[]
+
+  @@map("roles")
+}
+
+model UserRole {
+  id          String    @id @default(uuid())
+  user        User      @relation(fields: [user_id], references: [id])
+  user_id     String
+  role        Role      @relation(fields: [role_id], references: [id])
+  role_id     String
+  created_at  DateTime  @default(now()) @db.Timestamp(6)
+  updated_at  DateTime  @updatedAt  @db.Timestamp(6)
+
+  @@unique([user_id, role_id])
+  @@index([user_id])
+  @@index([role_id])
+  @@map("user_roles")
+}
+
+enum PERMISSION_NAME {
+  VIEW_USER
+  MODIFY_USER
+}
+
+model Permission {
+  id                String            @id @default(uuid())
+  name              PERMISSION_NAME
+  description       String
+  role_permissions  RolePermission[]
+
+  @@map("permissions")
+}
+
+model RolePermission {
+  id              String        @id @default(uuid())
+  role            Role          @relation(fields: [role_id], references: [id], onDelete: Cascade)
+  role_id         String
+  permission      Permission    @relation(fields: [permission_id], references: [id], onDelete: Cascade)
+  permission_id   String
+  created_at  DateTime          @default(now()) @db.Timestamp(6)
+  updated_at  DateTime          @updatedAt  @db.Timestamp(6)
+
+  @@map("role_permissions")
+}
+
+model Key {
+  id                  String   @id @default(uuid())
+  hashed_password     String?
+  user_id             String
+  user                User     @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+  @@index([user_id])
+  @@map("keys")
+}
+
+model Session {
+  id             String   @id @default(uuid())
+  user_id        String
+  active_expires BigInt
+  idle_expires   BigInt
+  user           User     @relation(references: [id], fields: [user_id], onDelete: Cascade)
+  created_at  DateTime          @default(now()) @db.Timestamp(6)
+  updated_at  DateTime          @updatedAt  @db.Timestamp(6)
+
+  @@index([user_id])
+  @@map("sessions")
+}

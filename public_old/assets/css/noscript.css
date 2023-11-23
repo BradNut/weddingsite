@@ -1,0 +1,189 @@
+:root {
+  /* Define Colors as colors */
+  --red: #990000;
+  --coral: #e64c44;
+  --blue: #336699;
+  --seaFoamBlue: #466b72;
+  --purpleBlue: #2e2b5e;
+  --white: #fffffe;
+  --greyWhite: #e6e3e0;
+  --grey: #efefef;
+  --yellow: #ffc600;
+  --light: #ffffff;
+  --black: #1b2d45;
+  --dark: #000000;
+  --seaGreen: #83c6a4;
+  --lighterDark: #131415;
+  --shellYellow: #ffc850;
+  --lightGrey: #c5c5c5;
+  --lightGray: var(--lightGrey);
+  --lightShade: #f8f7f5;
+  --darkGrey: #272727;
+  --coralTan: #ffddb7;
+  --blueGreen: #1d384e;
+  --lightViolet: #c298f7;
+  --darkerViolet: #7551a9;
+
+  /* Define Colors intentions */
+  --primary: var(--coralTan);
+  --secondary: var(--coralTan);
+  --danger: var(--grey);
+  --background: var(--seaFoamBlue);
+  --textColor: var(--black);
+  --buttonTextColor: var(--black);
+  --textAccent: var(--purpleBlue);
+  --lineColor: var(--grey);
+  --cardBg: var(--darkGrey);
+  --headerBackground: var(--darkGrey);
+  --footerBackground: var(--darkGrey);
+  --linkHover: var(--lightViolet);
+  --lightHairLine: var(--lightGrey);
+
+  /* Styles */
+  --line: solid 1px var(--lineColor);
+
+  /* Type */
+  --headingFont: 'Istok Web';
+  --bodyFont: 'Kanit';
+  --baseFontSize: 100%;
+  --h1: 4.209rem;
+  --h2: 3.157rem;
+  --h3: 2.369rem;
+  --h4: 1.777rem;
+  --h5: 1.333em;
+  --h6: 1rem;
+  --bodyTextSize: 1.777rem;
+  --smallText: 1.333rem;
+  --lineHeight: 1.75;
+
+  /* Elevation */
+  --level-0: none;
+  --level-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --level-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --level-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --level-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --level-1-primary: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --level-2-primary: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px #c298f7;
+  --level-3-primary: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px #c298f7;
+  --level-4-primary: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px #c298f7;
+
+  /* Positioning */
+  --containerPadding: 2.5%;
+  --headerHeight: 8rem;
+  --borderRadius: 10px;
+  --maxWidth: 850px;
+
+  /* Media Queryies - Not yet supported in CSS */
+  /* 
+    --xsmall: 340px;
+    --small: 500px;
+    --large: 960px;
+    --wide: 1200px;
+  */
+}
+
+html {
+  width: 100%;
+  background-image: url('https://res.cloudinary.com/royvalentinedev/image/upload/v1621792514/wedding/Background_u0cgyd.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--seaFoamBlue);
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  line-height: var(--lineHeight);
+  color: var(--primary);
+  padding: 0;
+  margin: 0;
+  font-size: var(--bodyTextSize);
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--background);
+}
+body::-webkit-scrollbar-track {
+  background: var(--background);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 6px;
+  border: 3px solid var(--background);
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--background);
+}
+
+a {
+  color: var(--primary);
+}
+
+a:hover {
+  color: var(--linkHover);
+}
+
+#no-script {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--primary);
+  width: 100%;
+}
+
+#no-script-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 3rem;
+  padding: 0.5em;
+  border: 0.2em solid var(--background);
+  border-radius: 0.5em;
+  background-color: hsl(190, 24%, 45%);
+}
+
+#no-script-img {
+  width: 200px;
+}
+
+#no-script-maintext {
+  font-size: 3rem;
+}
+
+#no-script-subtext {
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 758px) {
+  #no-script-maintext {
+    font-size: 2rem;
+  }
+
+  #no-script-subtext {
+    font-size: 1.2rem;
+  }
+
+  #no-script-img {
+    width: 100px;
+  }
+}

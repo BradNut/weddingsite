@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useInterval from '@/lib/useInterval';
+import useInterval from '../utils_old/useInterval';
 
 export default function useWeddingStart({ update = 60000 }) {
   const weddingDate = 1906736400000;
