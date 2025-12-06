@@ -19,7 +19,7 @@
     "dotenv": "^16.0.3",
     "escape-html": "^1.0.3",
     "html-escaper": "^3.0.3",
-    "iron-session": "^6.3.1",
+    "iron-session": "^8.0.4",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^4.11.0",
     "mongoose": "^6.13.6",
