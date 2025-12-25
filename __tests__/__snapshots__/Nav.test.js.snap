@@ -1,12 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Nav/> Renders nav correctly and matches snapshot 1`] = `
 <div>
   <nav
-    class="NavStyles-sc-vewc8g-0 dWZdml"
+    class="NavStyles-sc-wvsbq2-0 jaKUws"
   >
     <a
-      aria-current="page"
       href="/"
     >
       Home
@@ -34,7 +33,7 @@ exports[`<Nav/> Renders nav correctly and matches snapshot 1`] = `
     <a
       href="/qanda"
     >
-      Q + A
+      Q & A
     </a>
     <a
       href="/rsvp"

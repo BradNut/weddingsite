@@ -1,8 +1,23 @@
 import buildBase64Data from '../utils/buildBase64Data';
 
+// Mock fetch globally
+global.fetch = jest.fn();
+
 describe('build base 64 function', () => {
   const imageName = 'https://picsum.photos/1307/880';
   const alt = 'test alt';
+
+  beforeEach(() => {
+    // Mock successful fetch response
+    global.fetch.mockResolvedValue({
+      arrayBuffer: () => Promise.resolve(new ArrayBuffer(8)),
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('takes an image name and builds base64 image', async () => {
     const imageData = await buildBase64Data(false, imageName, alt, {});
     expect(imageData).toBeDefined();
@@ -17,6 +32,7 @@ describe('build base 64 function', () => {
   });
 
   it('fails if image not resolved', async () => {
+    global.fetch.mockRejectedValue(new Error('Failed to fetch'));
     expect(await buildBase64Data(false, 'Blah', alt, {})).toEqual({});
   });
 });
