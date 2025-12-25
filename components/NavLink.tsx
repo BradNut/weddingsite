@@ -1,12 +1,12 @@
-import type { PropsWithChildren } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 interface NavLinkProps {
   href: string;
+  children: React.ReactNode;
 }
 
-export const NavLink = ({ href, children }: PropsWithChildren<NavLinkProps>) => {
+export const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
   const { asPath } = useRouter();
   const ariaCurrent = href === asPath ? 'page' : undefined;
 
