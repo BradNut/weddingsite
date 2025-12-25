@@ -3,7 +3,7 @@
 exports[`<Nav/> Renders nav correctly and matches snapshot 1`] = `
 <div>
   <nav
-    class="NavStyles-sc-vewc8g-0 dtQtNf"
+    class="NavStyles-sc-wvsbq2-0 jaKUws"
   >
     <a
       href="/"
