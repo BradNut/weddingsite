@@ -11,7 +11,7 @@ async function logout(router) {
       body: JSON.stringify({}),
     }).then((e) => {
       router.push({
-        pathname: `/`,
+        pathname: '/',
       });
     });
   } catch (e) {

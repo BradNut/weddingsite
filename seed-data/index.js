@@ -10,7 +10,7 @@ export async function insertSeedData() {
   console.log('Create collection');
   for (const party of parties) {
     // eslint-disable-next-line prefer-const
-    let guestIds = [];
+    const guestIds = [];
     for (const guest of party?.guests) {
       const { _id: guestId } = await Guest.create({
         firstName: guest.firstName,

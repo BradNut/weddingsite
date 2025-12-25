@@ -129,7 +129,7 @@ const Login = () => {
           await handleSubmit(inputs);
           if (!errorMsg && errorMsg?.length !== 0) {
             router.push({
-              pathname: `/rsvp`,
+              pathname: '/rsvp',
             });
           }
         }}

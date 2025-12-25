@@ -58,7 +58,7 @@ export default function Event({ event }) {
                 {eventStart && (
                   <h3>
                     {eventStart}
-                    {eventEnd && ` - {end}`}
+                    {eventEnd && ' - {end}'}
                   </h3>
                 )}
               </div>

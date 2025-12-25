@@ -1,12 +1,12 @@
-import withSession from '../../lib/session';
+import { getSession } from '../../lib/session';
 import Guest from '../../models/Guest';
 import connectDb from '../../utils/db';
 
-export default withSession(async (req, res) => {
+export default async function handler(req, res) {
+  const session = await getSession(req, res);
   const {
     query: { id },
     method,
-    session,
   } = req;
 
   const { user } = session;
@@ -35,4 +35,4 @@ export default withSession(async (req, res) => {
       res.status(400).json({ success: false });
       break;
   }
-});
+}

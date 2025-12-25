@@ -1,7 +1,8 @@
-import withSession from '../../lib/session';
+import { getSession } from '../../lib/session';
 
-export default withSession(async (req, res) => {
-  const { user } = req.session;
+export default async function handler(req, res) {
+  const session = await getSession(req, res);
+  const { user } = session;
 
   if (user) {
     // in a real world application you might read the user id from the session and then do a database request
@@ -15,4 +16,4 @@ export default withSession(async (req, res) => {
       isLoggedIn: false,
     });
   }
-});
+}

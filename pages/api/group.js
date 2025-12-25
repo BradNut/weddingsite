@@ -1,15 +1,15 @@
-import escape from 'escape-html';
-import withSession from '../../lib/session';
+import escapeHtml from 'escape-html';
+import { getSession } from '../../lib/session';
 import Group from '../../models/Group';
 import Guest from '../../models/Guest';
 import connectDb from '../../utils/db';
 
-export default withSession(async (req, res) => {
+export default async function handler(req, res) {
+  const session = await getSession(req, res);
   const {
     query: { id },
     method,
     body,
-    session,
   } = req;
 
   const { user } = session;
@@ -72,8 +72,8 @@ export default withSession(async (req, res) => {
             const accepted = guest?.rsvpStatus === 'accepted';
             guestData.rsvpStatus =
               guest?.rsvpStatus !== 'invited' ? guest?.rsvpStatus : 'invited';
-            guestData.dietaryNotes = escape(guest?.dietaryNotes);
-            guestData.songRequests = escape(guest?.songRequests);
+            guestData.dietaryNotes = escapeHtml(guest?.dietaryNotes);
+            guestData.songRequests = escapeHtml(guest?.songRequests);
             guestData.plusOne =
               (guestData?.hasPlusOne && guest?.plusOne && accepted) || false;
             guestData.plusOneFirstName =
@@ -83,7 +83,7 @@ export default withSession(async (req, res) => {
             guestData.save();
           }
           await Group.findByIdAndUpdate(groupId, {
-            note: escape(note),
+            note: escapeHtml(note),
           });
           res.status(200).json({ message: 'SUCCESS' });
         }
@@ -99,4 +99,4 @@ export default withSession(async (req, res) => {
       res.status(400).json({ message: 'Unable to RSVP Your Group' });
       break;
   }
-});
+}

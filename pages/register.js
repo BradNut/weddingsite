@@ -60,7 +60,7 @@ export default function RegisterPage() {
         await handleSubmit(inputs.username, inputs.password);
         if (!errorMsg && errorMsg?.length !== 0) {
           router.push({
-            pathname: `/`,
+            pathname: '/',
           });
         } else {
           console.log(errorMsg);

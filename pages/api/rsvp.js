@@ -1,13 +1,13 @@
-import escape from 'escape-html';
-import withSession from '../../lib/session';
+import escapeHtml from 'escape-html';
+import { getSession } from '../../lib/session';
 import connectDb from '../../utils/db.js';
 import Guest from '../../models/Guest';
 
-export default withSession(async (req, res) => {
+export default async function handler(req, res) {
+  const session = await getSession(req, res);
   const {
     query: { id },
     method,
-    session,
   } = req;
 
   const { user } = session;
@@ -26,8 +26,8 @@ export default withSession(async (req, res) => {
 
     try {
       const result = await Guest.findOne({
-        firstName: { $regex: new RegExp(escape(firstName.trim()), 'i') },
-        lastName: { $regex: new RegExp(escape(lastName.trim()), 'i') },
+        firstName: { $regex: new RegExp(escapeHtml(firstName.trim()), 'i') },
+        lastName: { $regex: new RegExp(escapeHtml(lastName.trim()), 'i') },
       });
       // console.log(JSON.stringify(result));
       res.status(200).json({ status: 'SUCCESS', groupId: result.group });
@@ -36,4 +36,4 @@ export default withSession(async (req, res) => {
       res.status(fetchResponse?.status || 500).json({ status: 'FAILURE' });
     }
   }
-});
+}

@@ -25,10 +25,18 @@ export default async function buildBase64Data(
 
   if (imagePath) {
     try {
-      const { base64, img } = await getPlaiceholder(imagePath, { size: 10 });
+      const buffer = await fetch(imagePath).then(async (res) =>
+        Buffer.from(await res.arrayBuffer())
+      );
+      const {
+        base64,
+        metadata: { height, width },
+      } = await getPlaiceholder(buffer, { size: 10 });
       return {
         imageProps: {
-          ...img,
+          src: imagePath,
+          height,
+          width,
           blurDataURL: base64,
         },
         alt,

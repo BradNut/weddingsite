@@ -1,11 +1,12 @@
-import withSession from '../../lib/session';
+import { getSession } from '../../lib/session';
 import User from '../../models/User';
 
 const rootDomain = process.env.ROOT_DOMAIN;
 const protectedRoutes = [`${rootDomain}/register`, `${rootDomain}/createguest`];
 
 export default async function permissions(req, res) {
-  const { method, session } = req;
+  const session = await getSession(req, res);
+  const { method } = req;
 
   const { user } = session;
 
