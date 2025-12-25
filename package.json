@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.2",
-    "babel-core": "^6.26.3",
     "babel-plugin-styled-components": "^2.0.7",
     "bcryptjs": "^3.0.3",
     "cloudinary-build-url": "^0.2.4",
