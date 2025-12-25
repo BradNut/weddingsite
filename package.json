@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "description": "Wedding Website",
   "private": true,
+  "packageManager": "pnpm@10.26.0",
+  "pnpm": {
+    "overrides": {
+      "@types/react": "^19.1.0",
+      "@types/react-dom": "^19.1.0"
+    }
+  },
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
